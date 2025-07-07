@@ -1,8 +1,30 @@
-FROM node:18-alpine
-
+# ---------- Backend ----------
+FROM node:18 AS backend-build
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
+COPY backend/package*.json ./backend/
+RUN cd backend && npm install
+COPY backend ./backend
+WORKDIR /app/backend
+RUN npm run build
 
-CMD ["npm", "start"]
+# ---------- Frontend ----------
+FROM node:18 AS frontend-build
+WORKDIR /app
+COPY frontend/package*.json ./frontend/
+RUN cd frontend && npm install
+COPY frontend ./frontend
+WORKDIR /app/frontend
+RUN npm run build
+
+# ---------- Backend Runtime ----------
+FROM node:18 AS backend
+WORKDIR /app
+COPY --from=backend-build /app/backend ./
+ENV NODE_ENV=production
+EXPOSE 3000
+CMD ["node", "dist/main.js"]
+
+# ---------- Frontend Runtime ----------
+FROM nginx:alpine AS frontend
+COPY --from=frontend-build /app/frontend/dist /usr/share/nginx/html
+EXPOSE 80
