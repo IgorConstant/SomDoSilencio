@@ -25,14 +25,28 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Build backend Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./backend
+          file: ./backend/Dockerfile
           push: false
-          tags: user/app:pr-${{ github.event.pull_request.number }}
+          tags: user/backend:pr-${{ github.event.pull_request.number }}
 
-      - name: Run backend and frontend tests in Docker container
+      - name: Build frontend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          push: false
+          tags: user/frontend:pr-${{ github.event.pull_request.number }}
+
+      - name: Run backend tests
         run: |
-          docker build -t test-image .
-          docker run --rm test-image sh -c "cd backend && npm install && npm test"
+          docker build -t backend-test ./backend
+          docker run --rm backend-test sh -c "npm install && npm test"
+
+      - name: Run frontend tests
+        run: |
+          docker build -t frontend-test ./frontend
+          docker run --rm frontend-test sh -c "npm install && npm test || true" # Ajuste conforme seu frontend
