@@ -35,4 +35,4 @@ jobs:
       - name: Run tests in Docker container
         run: |
           docker build -t test-image .
-          docker run --rm test-image sh -c "npm install && npm test"
+          docker run --rm test-image sh -c "cd backend && npm install && npm test"
