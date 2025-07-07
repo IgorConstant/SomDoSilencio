@@ -1,8 +1,9 @@
 ### Som do Silêncio
 
-PT-BR: Este é um blog sobre música, onde você pode encontrar artigos, notícias e discussões sobre vários gêneros musicais, artistas e tendências. O blog tem como objetivo fornecer uma plataforma para entusiastas da música compartilharem seus pensamentos e experiências relacionadas à música.
+PT_BR: Quando decidi começar a escrever um blog sobre música, queria muito criar um espaço onde eu pudesse colocar em palavras minha paixão por tal. Sempre penso que podemos extrair da música, coisas muito além de solos ou melodias. No mais, espero que esse conteúdo chegue até você e que ajude em algo que você esteja passando.
 
-ENG: This is a blog about music, where you can find articles, news, and discussions about various music genres, artists, and trends. The blog aims to provide a platform for music enthusiasts to share their thoughts and experiences related to music.
+ENG: When I decided to start a blog about music, I really wanted to create a space where I could put my passion for it into words. I always think that we can extract from music things that go beyond solos or melodies. Above all, I hope this content reaches you and helps with whatever you're going through.
+
 
 ### Funcionalidades (PT-BR)
 - **Autenticação de Usuário**: Os usuários podem se registrar e fazer login no blog.
