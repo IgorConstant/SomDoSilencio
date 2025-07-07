@@ -16,6 +16,18 @@ export const updatePost = async (req, res) => {
   res.json(post);
 };
 
+export const getPostById = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ message: 'Post não encontrado' });
+    }
+    res.json(post);
+  } catch (error) {
+    res.status(400).json({ message: 'ID inválido' });
+  }
+};
+
 export const deletePost = async (req, res) => {
   await Post.findByIdAndDelete(req.params.id);
   res.sendStatus(204);
