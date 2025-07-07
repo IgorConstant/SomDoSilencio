@@ -29,7 +29,7 @@ FROM node:18 AS backend
 WORKDIR /app
 COPY --from=backend-build /app/backend ./
 ENV NODE_ENV=production
-EXPOSE 3000
+EXPOSE 5001
 CMD ["node", "dist/main.js"]
 
 # ---------- Frontend Runtime ----------
