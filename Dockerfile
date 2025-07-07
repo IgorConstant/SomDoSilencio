@@ -16,6 +16,14 @@ COPY frontend ./frontend
 WORKDIR /app/frontend
 RUN npm run build
 
+# ---------- Test Runtime ----------
+FROM node:18 AS test
+WORKDIR /app
+COPY --from=backend-build /app/backend ./backend
+COPY --from=frontend-build /app/frontend ./frontend
+# Instala wait-on globalmente para sincronização dos testes
+RUN npm install -g wait-on
+
 # ---------- Backend Runtime ----------
 FROM node:18 AS backend
 WORKDIR /app

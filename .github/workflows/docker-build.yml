@@ -37,5 +37,10 @@ jobs:
           docker build -t test-image .
           # Testes do backend
           docker run --rm test-image sh -c "cd backend && npm install && npm test"
-          # Testes do frontend
-          docker run --rm test-image sh -c "cd frontend && npm install && npm test -- --watch=false --browsers=ChromeHeadless"
+          # Testes do frontend com backend rodando em background
+          docker run --rm -p 5001:5001 test-image sh -c "\
+            cd backend && npm install && npm start & \
+            cd ../frontend && npm install && \
+            npx wait-on http://localhost:5001/api/posts && \
+            npm test -- --watch=false --browsers=ChromeHeadless
+          "
