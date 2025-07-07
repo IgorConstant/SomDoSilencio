@@ -1,0 +1,70 @@
+{
+  "hash": "4e9a559f",
+  "configHash": "586dbc48",
+  "lockfileHash": "4d1d737c",
+  "browserHash": "1723bc2d",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "911d20df",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "047cbf1e",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "6748b977",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "f8027885",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "01e5bd61",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "58e3b055",
+      "needsInterop": false
+    },
+    "ngx-editor": {
+      "src": "../../../../../../node_modules/ngx-editor/fesm2022/ngx-editor.mjs",
+      "file": "ngx-editor.js",
+      "fileHash": "79924825",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-SG2XXMZD": {
+      "file": "chunk-SG2XXMZD.js"
+    },
+    "chunk-WZ5JHWLR": {
+      "file": "chunk-WZ5JHWLR.js"
+    },
+    "chunk-JOTZARVK": {
+      "file": "chunk-JOTZARVK.js"
+    },
+    "chunk-LBBNSRA6": {
+      "file": "chunk-LBBNSRA6.js"
+    },
+    "chunk-3BOLD7KD": {
+      "file": "chunk-3BOLD7KD.js"
+    },
+    "chunk-K64G6SZD": {
+      "file": "chunk-K64G6SZD.js"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<section class="section bg-light">
+  <div class="container">
+    <div class="row align-items-stretch retro-layout">
+      <div class="col-md-4">
+        <ng-container *ngFor="let post of posts; let i = index">
+          <ng-container *ngIf="i % 3 === 0">
+            <a [routerLink]="['/post', post.slug]" class="h-entry mb-30 v-height gradient">
+              <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + post.image + ')'"></div>
+              <div class="text">
+                <span class="date">{{ post.createdAt | date:'MMM d, y' }}</span>
+                <h2>{{ post.title }}</h2>
+                <small class="author">Por: {{ post.author }}</small>
+              </div>
+            </a>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div class="col-md-4">
+        <ng-container *ngFor="let post of posts; let i = index">
+          <ng-container *ngIf="i % 3 === 1">
+            <a [routerLink]="['/post', post.slug]" class="h-entry mb-30 h-100 gradient">
+              <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + post.image + ')'"></div>
+              <div class="text">
+                <span class="date">{{ post.createdAt | date:'MMM d, y' }}</span>
+                <h2>{{ post.title }}</h2>
+                <small class="author">Por: {{ post.author }}</small>
+              </div>
+            </a>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div class="col-md-4">
+        <ng-container *ngFor="let post of posts; let i = index">
+          <ng-container *ngIf="i % 3 === 2">
+            <a [routerLink]="['/post', post.slug]" class="h-entry mb-30 v-height gradient">
+              <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + post.image + ')'"></div>
+              <div class="text">
+                <span class="date">{{ post.createdAt | date:'MMM d, y' }}</span>
+                <h2>{{ post.title }}</h2>
+                <small class="author">Por: {{ post.author }}</small>
+              </div>
+            </a>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

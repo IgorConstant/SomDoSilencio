@@ -1,0 +1,96 @@
+<div class="sidebar border border-right p-0 bg-body-tertiary">
+    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+        aria-labelledby="sidebarMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">O Som do Silêncio - Blog</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+            <h6
+                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                <span>Blog</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#plus-circle"></use>
+                    </svg>
+                </a>
+            </h6>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                        <i class="bi bi-speedometer2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 active" data-bs-toggle="collapse"
+                        href="#postsSubmenu" role="button" aria-expanded="false" aria-controls="postsSubmenu">
+                        <i class="bi bi-file-earmark-text"></i>
+                        Posts
+                        <i class="bi bi-caret-down ms-auto"></i>
+                    </a>
+                    <div class="collapse" id="postsSubmenu">
+                        <ul class="nav flex-column ms-4">
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" routerLink="/criar-postagem"
+                                    routerLinkActive="active">
+                                    <i class="bi bi-plus-circle"></i>
+                                    Criar Post
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                        <i class="bi bi-graph-up"></i>
+                        Analytics
+                    </a>
+                </li>
+            </ul>
+            <hr class="my-3">
+            <h6
+                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                <span>Logs</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#plus-circle"></use>
+                    </svg>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-auto">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <i class="bi bi-cloud-arrow-down"></i>
+                        Backups
+                    </a>
+                </li>
+            </ul>
+            <hr class="my-3">
+            <h6
+                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                <span>Acessos</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#plus-circle"></use>
+                    </svg>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-auto">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <i class="bi bi-person-plus"></i>
+                        Registrar novo usuário
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

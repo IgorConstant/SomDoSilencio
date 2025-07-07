@@ -1,0 +1,3 @@
+<app-navbar [ngClass]="{ 'd-none': router.url === '/login' || router.url === '/dashboard' || router.url === '/criar-postagem' }"></app-navbar>
+<router-outlet />
+<app-footer [ngClass]="{ 'd-none': router.url === '/login' || router.url === '/dashboard' || router.url === '/criar-postagem' }"></app-footer>
