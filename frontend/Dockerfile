@@ -3,6 +3,13 @@ FROM node:20-alpine as build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+
+# Instale Chromium e suas dependências
+RUN apk add --no-cache chromium nss
+
+# Defina a variável de ambiente CHROME_BIN
+ENV CHROME_BIN=/usr/bin/chromium-browser
+
 COPY . .
 RUN npm run build -- --output-path=dist
 
