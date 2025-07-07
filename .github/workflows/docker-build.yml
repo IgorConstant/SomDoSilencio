@@ -6,7 +6,7 @@ on:
       - main
     types: [opened, synchronize, reopened]
     paths-ignore:
-      - 'README.md'
+      - "README.md"
 
 jobs:
   build:
@@ -32,7 +32,10 @@ jobs:
           push: false
           tags: user/app:pr-${{ github.event.pull_request.number }}
 
-      - name: Run tests in Docker container
+      - name: Run backend and frontend tests in Docker container
         run: |
           docker build -t test-image .
+          # Testes do backend
           docker run --rm test-image sh -c "cd backend && npm install && npm test"
+          # Testes do frontend
+          docker run --rm test-image sh -c "cd frontend && npm install && npm test -- --watch=false --browsers=ChromeHeadless"
