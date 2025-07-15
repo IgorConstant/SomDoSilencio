@@ -1,0 +1,9 @@
+<div class="popular-posts">
+  <h5>Posts Populares</h5>
+  <hr>
+  <ul class="list-unstyled">
+    <li *ngFor="let post of posts">
+      <a [routerLink]="['/post', post.slug]">{{ post.title }}</a>
+    </li>
+  </ul>
+</div>

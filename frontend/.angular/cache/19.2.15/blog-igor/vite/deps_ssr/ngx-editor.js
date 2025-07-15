@@ -1,9 +1,5 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
-  DomSanitizer
-} from "./chunk-LTLABGG2.js";
-import "./chunk-D6OAEE7N.js";
-import {
   CheckboxControlValueAccessor,
   DefaultValueAccessor,
   FormControl,
@@ -17,6 +13,10 @@ import {
   Validators,
   ɵNgNoValidate
 } from "./chunk-4LSOM7AI.js";
+import {
+  DomSanitizer
+} from "./chunk-LTLABGG2.js";
+import "./chunk-D6OAEE7N.js";
 import {
   AsyncPipe,
   CommonModule,

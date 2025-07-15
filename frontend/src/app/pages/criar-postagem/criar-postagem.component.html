@@ -31,20 +31,27 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <select class="form-select" name="status" [(ngModel)]="post.status" required>
                                     <option value="">Status</option>
                                     <option value="rascunho">Rascunho</option>
                                     <option value="publicado">Publicado</option>
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <input type="text" class="form-control" name="tags" [(ngModel)]="post.tags"
                                     placeholder="Tags (separadas por vírgula)">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <input type="text" class="form-control" name="category" [(ngModel)]="post.category"
                                     placeholder="Categoria">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" name="featured" [(ngModel)]="post.featured" required>
+                                    <option value="">Destaque</option>
+                                    <option value="true">Sim</option>
+                                    <option value="false">Não</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">

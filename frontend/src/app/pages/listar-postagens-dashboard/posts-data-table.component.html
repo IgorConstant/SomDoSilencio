@@ -10,6 +10,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Título</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Destaque</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -27,9 +28,17 @@
                             {{ post.status | titlecase }}
                         </span>
                     </td>
+                    <td>
+                        <span class="badge" [ngClass]="{
+                            'bg-primary': post.featured,
+                            'bg-secondary': !post.featured
+                        }">
+                            {{ post.featured ? 'Sim' : 'Não' }}
+                        </span>
+                    </td>
                     <td>{{ post.category }}</td>
                     <td class="actions">
-                        <button class="btn btn-sm btn-primary mr-2" title="Editar">
+                        <button class="btn btn-sm btn-primary mr-2" title="Editar" (click)="editPost(post)">
                             <i class="bi bi-pencil"></i>
                         </button>
                         <button class="btn btn-sm btn-danger ml-2" title="Excluir">
