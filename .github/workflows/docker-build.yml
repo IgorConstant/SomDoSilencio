@@ -49,4 +49,4 @@ jobs:
       - name: Run frontend tests
         run: |
           docker build -t frontend-test ./frontend
-          docker run --rm frontend-test sh -c "npm install && npm test || true" # Ajuste conforme seu frontend
+          docker run --rm frontend-test sh -c "npm install && npm test || true"

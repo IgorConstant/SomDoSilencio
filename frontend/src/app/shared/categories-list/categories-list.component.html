@@ -1,0 +1,9 @@
+<div class="categories-list">
+  <h5>Categorias</h5>
+  <hr>
+  <ul class="list-unstyled">
+    <li *ngFor="let cat of categories">
+      {{ cat.name }} <span class="badge bg-secondary">{{ cat.count }}</span>
+    </li>
+  </ul>
+</div>

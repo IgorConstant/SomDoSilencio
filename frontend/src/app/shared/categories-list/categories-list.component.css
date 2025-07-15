@@ -1,0 +1,28 @@
+.categories-list {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.categories-list h5 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.categories-list ul {
+    padding-left: 0;
+}
+
+.categories-list li {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.categories-list .badge {
+    font-size: 12px;
+}

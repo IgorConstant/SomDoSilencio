@@ -10,6 +10,7 @@ const postSchema = new mongoose.Schema({
   status: { type: String, enum: ['rascunho', 'publicado', 'inativo'], default: 'rascunho' },
   tags: [String],
   category: String,
+  featured: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: Date
 });

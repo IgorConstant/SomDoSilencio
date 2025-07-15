@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,6 +10,7 @@ export interface Post {
   seoDescription: string;
   status: string;
   category: string;
+  featured: boolean;
   createdAt: string;
 }
 
@@ -55,8 +57,10 @@ export class PostsDataTableComponent implements OnInit {
     this.pageChange.emit(this.currentPage);
   }
 
-  editPost(postId: string) {
-    // Implement edit post logic
+  private router = inject(Router);
+
+  editPost(post: Post) {
+    this.router.navigate([`/editar-postagem`, post._id]);
   }
 
   deletePost(postId: string) {

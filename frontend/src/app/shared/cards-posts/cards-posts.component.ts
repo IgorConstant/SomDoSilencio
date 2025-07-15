@@ -13,6 +13,7 @@ import { PostsService, Post } from '../../services/posts.service';
 })
 export class CardsPostsComponent implements OnInit {
   posts: Post[] = [];
+  featuredPosts: Post[] = [];
   uploadsUrl = environment.apiUrl + '/uploads/';
 
   constructor(private postsService: PostsService) {}
@@ -21,6 +22,7 @@ export class CardsPostsComponent implements OnInit {
     this.postsService.getPosts().subscribe({
       next: (data) => {
         this.posts = data.filter(p => p.status === 'publicado');
+        this.featuredPosts = this.posts.filter(p => p.featured);
       },
       error: (err) => {
         console.error('Erro ao carregar posts:', err);

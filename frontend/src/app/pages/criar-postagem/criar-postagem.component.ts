@@ -34,7 +34,8 @@ export class CriarPostagemComponent {
     seoDescription: '',
     status: '',
     tags: [],
-    category: ''
+    category: '',
+    featured: false
   };
   selectedFile: File | null = null;
 

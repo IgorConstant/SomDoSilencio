@@ -1,8 +1,4 @@
 import {
-  DomSanitizer
-} from "./chunk-SG2XXMZD.js";
-import "./chunk-WZ5JHWLR.js";
-import {
   CheckboxControlValueAccessor,
   DefaultValueAccessor,
   FormControl,
@@ -16,6 +12,10 @@ import {
   Validators,
   ɵNgNoValidate
 } from "./chunk-JOTZARVK.js";
+import {
+  DomSanitizer
+} from "./chunk-SG2XXMZD.js";
+import "./chunk-WZ5JHWLR.js";
 import {
   AsyncPipe,
   CommonModule,

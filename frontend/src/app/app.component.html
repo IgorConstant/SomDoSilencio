@@ -1,3 +1,3 @@
-<app-navbar [ngClass]="{ 'd-none': router.url === '/login' || router.url === '/dashboard' || router.url === '/criar-postagem' || router.url === '/listar-postagens' }"></app-navbar>
+<app-navbar [ngClass]="{ 'd-none': hideLayoutElements }"></app-navbar>
 <router-outlet />
-<app-footer [ngClass]="{ 'd-none': router.url === '/login' || router.url === '/dashboard' || router.url === '/criar-postagem' || router.url === '/listar-postagens' }"></app-footer>
+<app-footer [ngClass]="{ 'd-none': hideLayoutElements }"></app-footer>

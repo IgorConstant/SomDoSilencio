@@ -14,6 +14,7 @@ export interface Post {
   status: string;
   tags: string[];
   category: string;
+  featured: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -28,6 +29,7 @@ export interface CriarPosts {
   status: string;
   tags: string[];
   category: string;
+  featured: boolean;
 }
 
 @Injectable({
@@ -54,9 +56,27 @@ export class PostsService {
       };
       return this.http.post<Post>(url, post, { headers });
     } else {
-      // Para FormData, não setar Content-Type manualmente
       headers = token ? { Authorization: `Bearer ${token}` } : {};
       return this.http.post<Post>(url, post, { headers });
+    }
+  }
+  
+  atualizarPostagem(
+    id: string,
+    post: Partial<Post> | FormData
+  ): Observable<Post> {
+    const url = `${this.apiUrl}/update/${id}`;
+    const token = localStorage.getItem("token");
+    let headers = {};
+    if (!(post instanceof FormData)) {
+      headers = {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      };
+      return this.http.put<Post>(url, post, { headers });
+    } else {
+      headers = token ? { Authorization: `Bearer ${token}` } : {};
+      return this.http.put<Post>(url, post, { headers });
     }
   }
 }
