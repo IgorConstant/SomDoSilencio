@@ -3,10 +3,17 @@
     padding-bottom: 4rem;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-     font-family: "Rubik", sans-serif;
+    font-family: "Rubik", sans-serif;
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 4px solid #a9a9a9;
+    padding-left: 1rem;
+    margin: 1rem 0;
 }

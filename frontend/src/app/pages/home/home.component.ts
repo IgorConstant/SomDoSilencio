@@ -15,6 +15,14 @@ export class HomeComponent {
   featuredPosts: Post[] = [];
   oldPosts: Post[] = [];
 
+  get oldPostsGrouped(): Post[][] {
+    const groups: Post[][] = [];
+    for (let i = 0; i < this.oldPosts.length; i += 3) {
+      groups.push(this.oldPosts.slice(i, i + 3));
+    }
+    return groups;
+  }
+
   constructor(private postsService: PostsService) {
     this.postsService.getPosts().subscribe({
       next: (data) => {

@@ -52,7 +52,7 @@
             </tbody>
         </table>
     </div>
-    <nav *ngIf="totalPages > 1">
+    <nav class="pb-4" *ngIf="totalPages > 1">
         <ul class="pagination justify-content-center">
             <li class="page-item" [class.disabled]="currentPage === 1">
                 <button class="page-link" (click)="goToPage(currentPage - 1)">&laquo;</button>

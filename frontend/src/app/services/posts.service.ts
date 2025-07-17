@@ -12,6 +12,7 @@ export interface Post {
   image: string;
   seoDescription: string;
   status: string;
+  intro: string;
   tags: string[];
   category: string;
   featured: boolean;
@@ -30,6 +31,7 @@ export interface CriarPosts {
   tags: string[];
   category: string;
   featured: boolean;
+  intro: string;
 }
 
 @Injectable({
@@ -60,7 +62,7 @@ export class PostsService {
       return this.http.post<Post>(url, post, { headers });
     }
   }
-  
+
   atualizarPostagem(
     id: string,
     post: Partial<Post> | FormData
@@ -78,5 +80,10 @@ export class PostsService {
       headers = token ? { Authorization: `Bearer ${token}` } : {};
       return this.http.put<Post>(url, post, { headers });
     }
+  }
+
+  getPostBySlug(slug: string): Observable<Post> {
+    const url = `${this.apiUrl}/slug/${slug}`;
+    return this.http.get<Post>(url);
   }
 }
