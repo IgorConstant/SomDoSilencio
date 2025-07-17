@@ -1,3 +1,14 @@
+export const getPostBySlug = async (req, res) => {
+  try {
+    const post = await Post.findOne({ slug: req.params.slug });
+    if (!post) {
+      return res.status(404).json({ message: 'Post não encontrado' });
+    }
+    res.json(post);
+  } catch (error) {
+    res.status(400).json({ message: 'Slug inválido' });
+  }
+}
 import Post from '../models/Post.js';
 
 export const createPost = async (req, res) => {

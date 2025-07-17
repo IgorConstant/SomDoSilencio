@@ -7,6 +7,8 @@ import { CriarPostagemComponent } from './pages/criar-postagem/criar-postagem.co
 import { ListarPostagensDashboardComponent } from './pages/listar-postagens-dashboard/listar-postagens-dashboard.component';
 import { ListarPostsSiteComponent } from './pages/listar-posts-site/listar-posts-site.component';
 import { EditarPostDashboardComponent } from './pages/editar-post-dashboard/editar-post-dashboard.component';
+import { PostagemComponent } from './pages/postagem/postagem.component';
+import { IntegracoesComponent } from './pages/integracoes/integracoes.component';
 import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
@@ -16,5 +18,7 @@ export const routes: Routes = [
     { path: 'criar-postagem', component: CriarPostagemComponent, canActivate: [AuthGuard] },
     { path: 'listar-postagens', component: ListarPostagensDashboardComponent, canActivate: [AuthGuard] },
     { path: 'editar-postagem/:id', component: EditarPostDashboardComponent, canActivate: [AuthGuard] },
+    { path: 'integracoes', component: IntegracoesComponent, canActivate: [AuthGuard] },
     { path: 'postagens', component: ListarPostsSiteComponent },
+    { path: 'post/:slug', component: PostagemComponent },
 ];

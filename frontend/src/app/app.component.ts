@@ -12,7 +12,7 @@ import { FooterComponent } from "./shared/footer/footer.component";
 })
 // ...existing code...
 export class AppComponent {
-  title = "Medium - Igor H. Constant";
+  title = "";
   constructor(public router: Router) {}
 
   get hideLayoutElements(): boolean {
@@ -21,6 +21,7 @@ export class AppComponent {
       "/dashboard",
       "/criar-postagem",
       "/listar-postagens",
+      "/integracoes",
     ];
     // Verifica se está em uma rota exata ou se começa com '/editar-postagem/'
     return (

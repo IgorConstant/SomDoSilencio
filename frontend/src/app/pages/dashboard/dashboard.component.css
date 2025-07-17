@@ -1,0 +1,5 @@
+.list-group{
+    >li{
+        font-size: 14px;
+    }
+}

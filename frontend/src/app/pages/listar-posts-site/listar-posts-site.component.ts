@@ -36,7 +36,9 @@ export class ListarPostsSiteComponent {
   constructor(private postsService: PostsService) {
     this.postsService.getPosts().subscribe({
       next: (data) => {
-        this.posts = data.filter((p) => p.status === "publicado");
+        this.posts = data
+          .filter((p) => p.status === "publicado")
+          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         this.paginatePosts();
         this.setPopularPosts();
         this.setCategories();

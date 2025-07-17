@@ -13,9 +13,13 @@
                 <div class="formulario-editar-postagem my-5">
                     <form #editarPostForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="post">
                         <div class="row mb-3">
-                            <div class="col-md-3">
+                            <div class="col-md-12 mb-3">
                                 <input type="text" class="form-control" name="title" [(ngModel)]="post.title"
                                     placeholder="Título" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="intro" [(ngModel)]="post.intro"
+                                    placeholder="Introdução" required>
                             </div>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" name="slug" [(ngModel)]="post.slug"
@@ -57,7 +61,7 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <div class="NgxEditor__Wrapper">
-                                    <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
                                     <ngx-editor [editor]="editor" [(ngModel)]="post.content"
                                         (ngModelChange)="onContentChange($event)" name="content"
                                         [placeholder]="'Escreva aqui...'"></ngx-editor>

@@ -8,7 +8,7 @@ import { NavbarDashboardComponent } from '../../shared/navbar-dashboard/navbar-d
 import { PostsService, CriarPosts } from '../../services/posts.service';
 
 // NGX Editor imports
-import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from 'ngx-editor';
+import { NgxEditorComponent, NgxEditorMenuComponent, Editor, Toolbar } from 'ngx-editor';
 
 
 @Component({
@@ -21,6 +21,17 @@ import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from 'ngx-editor';
 export class CriarPostagemComponent {
 
   editor!: Editor;
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
+  
   content: string = '';
 
   constructor(public postsService: PostsService) {}
@@ -33,6 +44,7 @@ export class CriarPostagemComponent {
     image: '',
     seoDescription: '',
     status: '',
+    intro: '',
     tags: [],
     category: '',
     featured: false
