@@ -14,6 +14,7 @@ export interface Post {
   status: string;
   intro: string;
   tags: string[];
+  autoriaFoto: string;
   category: string;
   featured: boolean;
   createdAt: string;
@@ -31,6 +32,7 @@ export interface CriarPosts {
   tags: string[];
   category: string;
   featured: boolean;
+  autoriaFoto: string;
   intro: string;
 }
 
@@ -85,5 +87,15 @@ export class PostsService {
   getPostBySlug(slug: string): Observable<Post> {
     const url = `${this.apiUrl}/slug/${slug}`;
     return this.http.get<Post>(url);
+  }
+  
+  deletePost(id: string): Observable<any> {
+    const url = `${this.apiUrl}/delete/${id}`;
+    const token = localStorage.getItem("token");
+    let headers: { [key: string]: string } = {};
+    if (token) {
+      headers = { Authorization: `Bearer ${token}` };
+    }
+    return this.http.delete(url, { headers });
   }
 }

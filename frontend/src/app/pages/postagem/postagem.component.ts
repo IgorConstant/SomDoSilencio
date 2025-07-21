@@ -12,6 +12,20 @@ import { PostsService, Post } from "../../services/posts.service";
   styleUrl: "./postagem.component.css",
 })
 export class PostagemComponent implements OnInit {
+  private cleanHtmlContent(html: string): string {
+    if (!html) return html;
+    html = html.trim();
+    // Remove aspas duplas/simples no início/fim
+    html = html.replace(/^['"]+|['"]+$/g, "");
+    // Remove barras invertidas antes de aspas ou tags
+    html = html.replace(/\\(["'])/g, "$1");
+    // Remove <p> ao redor de <iframe>
+    html = html.replace(
+      /<p>(\s*)?(<iframe[\s\S]*?<\/iframe>)(\s*)?<\/p>/gi,
+      "$2"
+    );
+    return html;
+  }
   post: Post | null = null;
   loading = true;
   error = "";
@@ -29,31 +43,40 @@ export class PostagemComponent implements OnInit {
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get("slug");
     if (slug) {
-      // Primeiro, carrega todos os posts para popularPosts
       this.postsService.getPosts().subscribe({
         next: (posts) => {
           this.allPosts = posts.filter((p) => p.status === "publicado");
-          // Depois, carrega o post atual
           this.postsService.getPostBySlug(slug).subscribe({
             next: (post) => {
               this.post = post;
-              // Atualiza o título da página
-              if (post && post.title) {
-                this.titleService.setTitle(`${post.title} - O som do silêncio`);
+
+              // 🔍 Logs para debug
+              console.log("🟦 HTML original:", post.content);
+
+              const cleaned = this.cleanHtmlContent(post.content);
+
+              console.log("🟩 HTML limpo:", cleaned);
+
+              this.safeContent = post?.content
+                ? this.sanitizer.bypassSecurityTrustHtml(cleaned)
+                : null;
+
+              this.loading = false;
+              if (post?.title) {
+                this.titleService.setTitle(`${post.title} - o som do silêncio`);
               }
-              // Atualiza meta keywords se houver tags
-              if (post && post.tags && post.tags.length > 0) {
+              if (post?.intro) {
+                this.metaService.updateTag({
+                  name: "description",
+                  content: post.intro,
+                });
+              }
+              if (post?.tags?.length) {
                 this.metaService.updateTag({
                   name: "keywords",
                   content: post.tags.join(", "),
                 });
               }
-              // Sanitiza o conteúdo para permitir iframes
-              this.safeContent =
-                post && post.content
-                  ? this.sanitizer.bypassSecurityTrustHtml(post.content)
-                  : null;
-              this.loading = false;
             },
             error: () => {
               this.error = "Post não encontrado.";

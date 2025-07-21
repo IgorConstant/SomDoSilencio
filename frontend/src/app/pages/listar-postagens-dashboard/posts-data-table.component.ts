@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { PostsService } from '../../services/posts.service';
 import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ export class PostsDataTableComponent implements OnInit {
   @Input() posts: Post[] = [];
   @Output() pageChange = new EventEmitter<number>();
   @Output() filterChange = new EventEmitter<string>();
+  @Output() postDeleted = new EventEmitter<string>();
 
   filterTitle: string = '';
   currentPage: number = 1;
@@ -63,7 +65,17 @@ export class PostsDataTableComponent implements OnInit {
     this.router.navigate([`/editar-postagem`, post._id]);
   }
 
+  private postsService = inject(PostsService);
+
   deletePost(postId: string) {
-    // Implement delete post logic
+    if (!confirm('Tem certeza que deseja excluir esta postagem?')) return;
+    this.postsService.deletePost(postId).subscribe({
+      next: () => {
+        this.postDeleted.emit(postId);
+      },
+      error: () => {
+        alert('Erro ao excluir postagem.');
+      }
+    });
   }
 }

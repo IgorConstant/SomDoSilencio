@@ -17,9 +17,13 @@
                                 <input type="text" class="form-control" name="title" [(ngModel)]="post.title"
                                     placeholder="Título" required>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12 mb-3">
                                 <input type="text" class="form-control" name="intro" [(ngModel)]="post.intro"
                                     placeholder="Introdução" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="autoria-foto" [(ngModel)]="post.autoriaFoto"
+                                    placeholder="Foto Por:" required>
                             </div>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" name="slug" [(ngModel)]="post.slug"
@@ -60,10 +64,14 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <div class="NgxEditor__Wrapper">
-                                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
-                                    <ngx-editor [editor]="editor" [(ngModel)]="post.content" name="content" [disabled]="false"
-                                        [placeholder]="'Escreva aqui...'"></ngx-editor>
+                                <div class="QuillEditor__Wrapper">
+                                    <quill-editor
+                                        [(ngModel)]="post.content"
+                                        [modules]="quillModules"
+                                        name="content"
+                                        [placeholder]="'Escreva aqui...'"
+                                        [style]="{height: '300px'}"
+                                    ></quill-editor>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +87,9 @@
                         </div>
                     </form>
                 </div>
+                <ng-container *ngIf="(toastService.toast$ | async) as toast">
+                  <app-toast [message]="toast.message" [type]="toast.type"></app-toast>
+                </ng-container>
             </main>
         </div>
     </div>
