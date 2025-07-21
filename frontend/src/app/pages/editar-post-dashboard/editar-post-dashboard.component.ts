@@ -1,14 +1,12 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ToastService, ToastType } from '../../shared/toast/toast.service';
+import DOMPurify from "dompurify";
 import { ActivatedRoute } from "@angular/router";
 import { PostsService, Post } from "../../services/posts.service";
 import { NavbarDashboardComponent } from "../../shared/navbar-dashboard/navbar-dashboard.component";
 import { SidebarComponent } from "../../shared/sidebar/sidebar.component";
-import {
-  NgxEditorComponent,
-  NgxEditorMenuComponent,
-  Editor,
-  Toolbar,
-} from "ngx-editor";
+import { ToastComponent } from '../../shared/toast/toast.component';
+import { QuillModule } from 'ngx-quill';
 import { CommonModule } from "@angular/common";
 import { environment } from "../../../environments/environment";
 import { FormsModule } from "@angular/forms";
@@ -19,15 +17,15 @@ import { FormsModule } from "@angular/forms";
   imports: [
     NavbarDashboardComponent,
     SidebarComponent,
-    NgxEditorComponent,
-    NgxEditorMenuComponent,
     CommonModule,
     FormsModule,
+    QuillModule,
+    ToastComponent,
   ],
   templateUrl: "./editar-post-dashboard.component.html",
   styleUrls: ["./editar-post-dashboard.component.css"],
 })
-export class EditarPostDashboardComponent implements OnInit, OnDestroy {
+export class EditarPostDashboardComponent implements OnInit {
   uploadURL = environment.baseURL;
   onContentChange(content: string) {
     if (this.post) {
@@ -36,26 +34,26 @@ export class EditarPostDashboardComponent implements OnInit, OnDestroy {
   }
   post: Post | null = null;
   loading = true;
-  editor!: Editor;
-  toolbar: Toolbar = [
-    ["bold", "italic"],
-    ["underline", "strike"],
-    ["code", "blockquote"],
-    ["ordered_list", "bullet_list"],
-    [{ heading: ["h1", "h2", "h3", "h4", "h5", "h6"] }],
-    ["link", "image"],
-    ["text_color", "background_color"],
-    ["align_left", "align_center", "align_right", "align_justify"],
-  ];
+  quillModules = {
+    toolbar: [
+      ["bold", "italic", "underline", "strike"],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["link", "image", "video"],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+    ],
+  };
   selectedFile: File | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostsService
+    private postsService: PostsService,
+    public toastService: ToastService
   ) {}
 
   ngOnInit(): void {
-    this.editor = new Editor();
     const id = this.route.snapshot.paramMap.get("id");
     if (id) {
       this.postsService.getPosts().subscribe((posts) => {
@@ -78,10 +76,6 @@ export class EditarPostDashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.editor?.destroy();
-  }
-
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input && input.files && input.files.length > 0) {
@@ -91,6 +85,13 @@ export class EditarPostDashboardComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (!this.post) return;
+  
+    const sanitizerOptions = {
+      ADD_TAGS: ["iframe"],
+      ADD_ATTR: ["allow", "allowfullscreen", "frameBorder", "scrolling", "src", "height", "width", "style", "loading", "data-testid"]
+    };
+    this.post.content = DOMPurify.sanitize(this.post.content, sanitizerOptions);
+
     const id = this.route.snapshot.paramMap.get("id");
     let payload: any;
     if (this.selectedFile) {
@@ -118,10 +119,12 @@ export class EditarPostDashboardComponent implements OnInit, OnDestroy {
     }
     this.postsService.atualizarPostagem(id!, payload).subscribe({
       next: () => {
-        alert("Post atualizado com sucesso!");
-        window.location.href = "/dashboard";
+        this.toastService.show('Post atualizado com sucesso!', 'success');
+       
       },
-      error: () => alert("Erro ao atualizar post!"),
+      error: () => {
+        this.toastService.show('Erro ao atualizar post!', 'error');
+      },
     });
   }
 }

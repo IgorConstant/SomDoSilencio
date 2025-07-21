@@ -103,18 +103,21 @@
 .form-control::-webkit-input-placeholder {
     color: #fff;
     opacity: 1;
+    font-size: 12px;
+    font-weight: 300;
 }
 
 .site-nav .site-navigation .site-menu>li>a {
     font-family: "Rubik", sans-serif;
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
+    text-transform: lowercase;
 }
 
 .logo {
     font-family: "Rubik", sans-serif;
     color: #fff;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
 }

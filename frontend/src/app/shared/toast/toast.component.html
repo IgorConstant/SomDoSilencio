@@ -1,1 +1,4 @@
-<p>toast works!</p>
+<div class="toast-container" [ngClass]="type">
+  <i class="bi" [ngClass]="icon" style="font-size: 1.5rem; margin-right: 8px;"></i>
+  <span>{{ message }}</span>
+</div>

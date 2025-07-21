@@ -13,17 +13,18 @@
             <div class="site-navigation">
                 <div class="row g-0 align-items-center">
                     <div class="col-2">
-                        <a href="index.html" class="logo m-0 float-start">O som do silêncio.</a>
+                        <a routerLink="/" class="logo m-0 float-start">o som do silêncio.</a>
                     </div>
                     <div class="col-8 text-center">
-                        <form action="#" class="search-form d-inline-block d-lg-none">
-                            <input type="text" class="form-control" placeholder="Search...">
+                        <form class="search-form d-inline-block d-lg-none"
+                            (submit)="onSearch($event, searchInput.value)">
+                            <input #searchInput type="text" class="form-control" placeholder="buscar no blog">
                             <span class="bi-search"></span>
                         </form>
 
                         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">Sobre</a></li>
+                            <li class="active"><a routerLink="/">Home</a></li>
+                            <li><a routerLink="/sobre-mim">Sobre</a></li>
                             <li><a routerLink="/postagens">Blog</a></li>
                         </ul>
                     </div>
@@ -32,8 +33,9 @@
                             class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
                             <span></span>
                         </a>
-                        <form action="#" class="search-form d-none d-lg-inline-block">
-                            <input type="text" class="form-control" placeholder="Pesquisar">
+                        <form class="search-form d-none d-lg-inline-block"
+                            (submit)="onSearch($event, searchInputDesktop.value)">
+                            <input #searchInputDesktop type="text" class="form-control" placeholder="buscar no blog">
                             <span class="bi-search"></span>
                         </form>
                     </div>

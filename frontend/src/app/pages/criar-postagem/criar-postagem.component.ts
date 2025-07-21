@@ -1,5 +1,8 @@
 
 import { Component } from '@angular/core';
+import { ToastService, ToastType } from '../../shared/toast/toast.service';
+import { ToastComponent } from '../../shared/toast/toast.component';
+import DOMPurify from 'dompurify';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -8,33 +11,30 @@ import { NavbarDashboardComponent } from '../../shared/navbar-dashboard/navbar-d
 import { PostsService, CriarPosts } from '../../services/posts.service';
 
 // NGX Editor imports
-import { NgxEditorComponent, NgxEditorMenuComponent, Editor, Toolbar } from 'ngx-editor';
+import { QuillModule } from 'ngx-quill';
 
 
 @Component({
   selector: 'app-criar-postagem',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, SidebarComponent, NavbarDashboardComponent, NgxEditorComponent, NgxEditorMenuComponent],
+  imports: [CommonModule, RouterModule, FormsModule, SidebarComponent, NavbarDashboardComponent, QuillModule, ToastComponent],
   templateUrl: './criar-postagem.component.html',
   styleUrl: './criar-postagem.component.css'
 })
 export class CriarPostagemComponent {
+  constructor(public postsService: PostsService, public toastService: ToastService) {}
+  quillModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ['link', 'image', 'video'],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+    ],
+  };
 
-  editor!: Editor;
-  toolbar: Toolbar = [
-    ['bold', 'italic'],
-    ['underline', 'strike'],
-    ['code', 'blockquote'],
-    ['ordered_list', 'bullet_list'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
-    ['link', 'image'],
-    ['text_color', 'background_color'],
-    ['align_left', 'align_center', 'align_right', 'align_justify'],
-  ];
-  
-  content: string = '';
-
-  constructor(public postsService: PostsService) {}
 
   post: CriarPosts = {
     title: '',
@@ -46,18 +46,11 @@ export class CriarPostagemComponent {
     status: '',
     intro: '',
     tags: [],
+    autoriaFoto: '',
     category: '',
     featured: false
   };
   selectedFile: File | null = null;
-
-  ngOnInit() {
-    this.editor = new Editor();
-  }
-
-  ngOnDestroy() {
-    this.editor.destroy();
-  }
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -67,6 +60,13 @@ export class CriarPostagemComponent {
   }
 
   onSubmit() {
+    // Sanitizar o conteúdo permitindo iframes
+    const sanitizerOptions = {
+      ADD_TAGS: ['iframe'],
+      ADD_ATTR: ['allow', 'allowfullscreen', 'frameBorder', 'scrolling', 'src', 'height', 'width', 'style', 'loading', 'data-testid']
+    };
+    this.post.content = DOMPurify.sanitize(this.post.content, sanitizerOptions);
+
     if (this.selectedFile) {
       const formData = new FormData();
       Object.entries(this.post).forEach(([key, value]) => {
@@ -79,10 +79,12 @@ export class CriarPostagemComponent {
       formData.append('image', this.selectedFile);
       this.postsService.criarPostagem(formData as any).subscribe({
         next: () => {
-          alert('Post criado com sucesso!');
-          window.location.href = '/dashboard';
+          this.toastService.show('Post criado com sucesso!', 'success');
+          setTimeout(() => {
+            window.location.href = '/dashboard';
+          }, 2000);
         },
-        error: () => alert('Erro ao criar post!')
+        error: () => this.toastService.show('Erro ao criar post!', 'error')
       });
     } else {
       if (typeof this.post.tags === 'string') {
@@ -90,10 +92,12 @@ export class CriarPostagemComponent {
       }
       this.postsService.criarPostagem(this.post).subscribe({
         next: () => {
-          alert('Post criado com sucesso!');
-          window.location.href = '/dashboard';
+          this.toastService.show('Post criado com sucesso!', 'success');
+          setTimeout(() => {
+            window.location.href = '/dashboard';
+          }, 2000);
         },
-        error: () => alert('Erro ao criar post!')
+        error: () => this.toastService.show('Erro ao criar post!', 'error')
       });
     }
   }
