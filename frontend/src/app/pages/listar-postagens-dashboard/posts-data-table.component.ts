@@ -3,6 +3,8 @@ import { PostsService } from '../../services/posts.service';
 import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../shared/toast/toast.service';
+import { ToastComponent } from '../../shared/toast/toast.component';
 
 export interface Post {
   _id: string;
@@ -18,7 +20,7 @@ export interface Post {
 @Component({
   selector: 'app-posts-data-table',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastComponent],
   templateUrl: './posts-data-table.component.html',
   styleUrls: ['./posts-data-table.component.css']
 })
@@ -66,15 +68,19 @@ export class PostsDataTableComponent implements OnInit {
   }
 
   private postsService = inject(PostsService);
+  public toastService = inject(ToastService);
 
   deletePost(postId: string) {
     if (!confirm('Tem certeza que deseja excluir esta postagem?')) return;
     this.postsService.deletePost(postId).subscribe({
       next: () => {
-        this.postDeleted.emit(postId);
+        this.toastService.show('Post excluído com sucesso!', 'success');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
       },
       error: () => {
-        alert('Erro ao excluir postagem.');
+        this.toastService.show('Erro ao excluir postagem.', 'error');
       }
     });
   }

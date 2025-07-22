@@ -22,6 +22,7 @@ export class AppComponent {
       "/criar-postagem",
       "/listar-postagens",
       "/integracoes",
+      "/arquivo-stories"
     ];
     // Verifica se está em uma rota exata ou se começa com '/editar-postagem/'
     return (

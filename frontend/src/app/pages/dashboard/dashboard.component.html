@@ -13,17 +13,8 @@
                 </div>
                 <div class="analytics__graphics">
                     <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div>
-                                <h6 class="mb-3">Visualizações por Mês</h6>
-                                <div class="grafico">
-                                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
-                                        [options]="lineChartOptions" [legend]="lineChartLegend" chartType="line">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pb-4">
+
+                        <div class="col-md-4 pb-4">
                             <div>
                                 <h6 class="mb-3">Postagens mais lidas</h6>
                                 <ul class="list-group">
@@ -39,14 +30,13 @@
                                         História do Rock Nacional
                                         <span class="badge bg-primary rounded-pill">98 Leituras</span>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Dicas para compor músicas
-                                        <span class="badge bg-primary rounded-pill">87 Leituras</span>
-                                    </li>
+                                  
                                 </ul>
                             </div>
+                        </div>
+                        <div class="col-md-4 pb-4">
                             <div>
-                                <h6 class="mt-4 mb-3">Tipos de Dispositvos (%)</h6>
+                                <h6 class="mb-3">Tipos de Dispositvos (%)</h6>
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         Desktop
@@ -62,8 +52,10 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+                        <div class="col-md-4 pb-4">
                             <div class="sistema-operacional">
-                                <h6 class="mt-4 mb-3">Sistemas Operacionais (%)</h6>
+                                <h6 class="mb-3">Sistemas Operacionais (%)</h6>
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         Windows
@@ -78,6 +70,18 @@
                                         <span class="badge bg-primary rounded-pill">15%</span>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 mb-4">
+                            <div>
+                                <h6 class="mb-3">Visualizações por Mês</h6>
+                                <div class="grafico">
+                                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
+                                        [options]="lineChartOptions" [legend]="lineChartLegend" chartType="line">
+                                    </canvas>
+                                </div>
                             </div>
                         </div>
                     </div>

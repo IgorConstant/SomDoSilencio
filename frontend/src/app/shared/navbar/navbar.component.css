@@ -1,123 +1,69 @@
-/* Estilos do Navbar extraídos do custom-styles.css */
-.site-nav {
+.navbar {
     background-color: #185370;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
     position: relative;
     z-index: 100;
+    padding: 15px 20px;
+
+    .navbar-nav {
+
+        .nav-item {
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+
+        .nav-link {
+            color: #fff;
+            font-weight: 500;
+            text-transform: lowercase;
+            transition: color 0.3s cubic-bezier(0.4,0,0.2,1), text-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+
+            &:hover {
+                color: #f0f0f0;
+                text-decoration: none;
+                text-shadow: 0 2px 8px rgba(24,83,112,0.15);
+            }
+        }
+
+
+        .form-control::placeholder {
+            color: #ccc;
+            font-size: 12px;
+        }
+    }
 }
 
-.site-nav .container {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-
-.site-nav .site-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-}
-
-.site-nav .site-menu li {
-    display: inline-block;
-}
-
-.site-nav .site-menu li a {
-    color: #222;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-
-.site-nav .site-menu li.active a,
-.site-nav .site-menu li a:hover {
+#mobileMenu{
     background: #185370;
-    color: #fff;
-}
 
-.site-nav .search-form {
-    display: inline-block;
-    position: relative;
-}
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
 
-.site-nav .search-form input.form-control {
-    border-radius: 10px;
-    padding-right: 30px;
-    background: transparent;
-    color: #fff;
-}
-
-.site-nav .search-form .bi-search {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #aaa;
-}
-
-.site-menu-toggle {
-    cursor: pointer;
-    font-size: 24px;
-}
-
-.site-mobile-menu {
-    display: none;
-}
-
-@media (max-width: 991.98px) {
-    .site-nav .site-menu {
-        display: none;
+    h5{
+        color: #fff;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 10px;
     }
 
-    .site-mobile-menu {
-        display: block;
-        background: #fff;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 2000;
-        overflow-y: auto;
+    .btn-outline-primary {
+        color: #fff;
+        border-color: #fff;
+
+        &:hover {
+            background-color: #fff;
+            color: #185370;
+        }
     }
 
-    .site-mobile-menu-header {
-        display: flex;
-        justify-content: flex-end;
-        padding: 20px;
+    .nav-link{
+        color: #fff;
+        font-weight: 500;
+        text-transform: lowercase;
+
+        &:hover {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
     }
-
-    .site-mobile-menu-close {
-        font-size: 32px;
-        cursor: pointer;
-    }
-
-    .site-mobile-menu-body {
-        padding: 20px;
-    }
-}
-
-.form-control::-webkit-input-placeholder {
-    color: #fff;
-    opacity: 1;
-    font-size: 12px;
-    font-weight: 300;
-}
-
-.site-nav .site-navigation .site-menu>li>a {
-    font-family: "Rubik", sans-serif;
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: lowercase;
-}
-
-.logo {
-    font-family: "Rubik", sans-serif;
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
 }

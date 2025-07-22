@@ -8,15 +8,15 @@ ENG: When I decided to start a blog about music, I really wanted to create a spa
 ### Funcionalidades (PT-BR)
 - **Autenticação de Usuário**: Os usuários podem se registrar e fazer login no blog.
 - **Autenticação de Múltiplos Fatores (MFA)**: Segurança aprimorada para contas de usuário.
-- **Artigos sobre Música**: Os usuários podem ler e comentar em artigos sobre música.
+- **Artigos sobre Música**: Os usuários podem ler os artigos sobre música.
 - **Design Responsivo**: O blog é projetado para ser acessível em vários dispositivos.
 
 ### Features (ENG)
 
 - **User Authentication**: Users can register and log in to the blog.
 - **Multi-Factor Authentication (MFA)**: Enhanced security for user accounts.
-- **Music Articles**: Users can read and comment on articles about music.
-- **Responsive Design**: The blog is designed to be accessible on various devices.  
+- **Music Articles**: Users can read articles about music.
+- **Responsive Design**: The blog is designed to be accessible on various devices.
 
 ### Tecnologias Utilizadas (PT-BR)
 - **Frontend**: Angular, Bootstrap
@@ -30,7 +30,30 @@ ENG: When I decided to start a blog about music, I really wanted to create a spa
 - **Database**: MongoDB
 - **Authentication**: JWT, Passport.js
 
-### Installation
+### Instalação (PT-BR)
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/yourusername/BlogMusica.git
+   ```   
+2. Instale as dependências do backend:
+   ```bash
+   cd BlogMusica/backend
+   npm install
+   ```
+3. Instale as dependências do frontend:
+   ```bash
+   cd ../frontend
+   npm install
+   ```
+4. Configure as variáveis de ambiente:
+   Crie um arquivo `.env` no diretório `backend` e adicione sua string de conexão do MongoDB e outras configurações necessárias.
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   ```
+
+
+### Installation (ENG)
 
 1. Clone the repository:
    ```bash
