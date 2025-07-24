@@ -68,7 +68,5 @@
     </nav>
 
 
-    <ng-container *ngIf="(toastService.toast$ | async) as toast">
-        <app-toast [message]="toast.message" [type]="toast.type"></app-toast>
-    </ng-container>
+    <app-toast></app-toast>
 </div>
