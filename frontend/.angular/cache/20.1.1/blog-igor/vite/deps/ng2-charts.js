@@ -1,9 +1,4 @@
 import {
-  Chart,
-  defaults,
-  registerables
-} from "./chunk-HPPKA4IQ.js";
-import {
   merge_default
 } from "./chunk-6CHLKPRV.js";
 import {
@@ -22,11 +17,18 @@ import {
   ɵɵdefineDirective,
   ɵɵdefineInjectable,
   ɵɵdirectiveInject
-} from "./chunk-PHXXSTUJ.js";
+} from "./chunk-UFTGGF7F.js";
+import "./chunk-6WM4KJML.js";
+import "./chunk-N2Y53VC3.js";
 import {
   BehaviorSubject,
   distinctUntilChanged
-} from "./chunk-3KKC7HMJ.js";
+} from "./chunk-3T6W7NID.js";
+import {
+  Chart,
+  defaults,
+  registerables
+} from "./chunk-HPPKA4IQ.js";
 import "./chunk-4MWRP73S.js";
 
 // node_modules/ng2-charts/fesm2022/ng2-charts.mjs

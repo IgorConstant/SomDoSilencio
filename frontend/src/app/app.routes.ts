@@ -11,6 +11,7 @@ import { PostagemComponent } from './pages/postagem/postagem.component';
 import { IntegracoesComponent } from './pages/integracoes/integracoes.component';
 import { ResultadoPesquisaComponent } from './pages/resultado-pesquisa/resultado-pesquisa.component';
 import { SobreMimComponent } from './pages/sobre-mim/sobre-mim.component';
+import { ArquivoStoriesComponent } from './pages/arquivo-stories/arquivo-stories.component';
 import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'listar-postagens', component: ListarPostagensDashboardComponent, canActivate: [AuthGuard] },
     { path: 'editar-postagem/:id', component: EditarPostDashboardComponent, canActivate: [AuthGuard] },
     { path: 'integracoes', component: IntegracoesComponent, canActivate: [AuthGuard] },
+    { path: 'arquivo-stories', component: ArquivoStoriesComponent, canActivate: [AuthGuard] },
     { path: 'postagens', component: ListarPostsSiteComponent },
     { path: 'post/:slug', component: PostagemComponent },
     { path: 'resultado-pesquisa', component: ResultadoPesquisaComponent },
