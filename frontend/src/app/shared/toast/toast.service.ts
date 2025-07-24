@@ -1,19 +1,21 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+
+import { Injectable, signal } from '@angular/core';
 
 export type ToastType = 'success' | 'error';
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-  private toastSubject = new BehaviorSubject<{ message: string; type: ToastType } | null>(null);
-  toast$ = this.toastSubject.asObservable();
+
+  private toastSignal = signal<{ message: string; type: ToastType } | null>(null);
+  toast = this.toastSignal;
+
 
   show(message: string, type: ToastType = 'success') {
-    this.toastSubject.next({ message, type });
+    this.toastSignal.set({ message, type });
     setTimeout(() => this.hide(), 3500);
   }
 
   hide() {
-    this.toastSubject.next(null);
+    this.toastSignal.set(null);
   }
 }

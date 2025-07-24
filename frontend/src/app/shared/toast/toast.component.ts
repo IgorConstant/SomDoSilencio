@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ToastService, ToastType } from './toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -9,8 +11,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './toast.component.css'
 })
 export class ToastComponent {
-  @Input() message: string = '';
-  @Input() type: 'success' | 'error' = 'success';
+  private toastService = inject(ToastService);
+  toast = this.toastService.toast;
+
+  get message(): string {
+    return this.toast()?.message ?? '';
+  }
+
+  get type(): ToastType {
+    return this.toast()?.type ?? 'success';
+  }
+
   get icon(): string {
     return this.type === 'success' ? 'bi-check-circle-fill' : 'bi-x-circle-fill';
   }

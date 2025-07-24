@@ -33,11 +33,16 @@ jobs:
           push: false
           tags: user/backend:pr-${{ github.event.pull_request.number }}
 
+      - name: Run frontend linter
+        run: |
+          docker build -t frontend-lint -f ./frontend/Dockerfile.nginx ./frontend
+           docker run --rm -v ${{ github.workspace }}/frontend:/app -w /app node:20-alpine sh -c "npm install && npm run lint"
+
       - name: Build frontend Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
-          file: ./frontend/Dockerfile
+          file: ./frontend/Dockerfile.nginx
           push: false
           tags: user/frontend:pr-${{ github.event.pull_request.number }}
 

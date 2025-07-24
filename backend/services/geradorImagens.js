@@ -37,11 +37,10 @@ const generatePostImage = async ({ title, intro, author, readTime, slug, imageFi
               background-size: cover;
               background-position: center;
               background-repeat: no-repeat;
-              filter: blur(0) brightness(0.7);
             }
             .card {
               position: relative;
-              background: rgba(255,255,255,0.92);
+              background: #fff;
               padding: 48px 36px;
               width: 540px;
               border-radius: 24px;
