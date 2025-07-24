@@ -26,7 +26,7 @@ export class AppComponent {
       "/curadoria",
       
     ];
-    // Verifica se está em uma rota exata ou se começa com '/editar-postagem/'
+   
     return (
       hiddenRoutes.includes(this.router.url) ||
       this.router.url.startsWith("/editar-postagem/")
