@@ -4,3 +4,7 @@ package-lock.json
 DS_Store
 .vscode
 dist
+.DS_Store
+coverage
+.env
+.env.local  
