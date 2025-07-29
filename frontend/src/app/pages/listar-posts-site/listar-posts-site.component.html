@@ -1,0 +1,40 @@
+<section id="heroPosts">
+    <h1 class="text-center">arquivo.</h1>
+</section>
+
+<section id="postsSite">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="posts-list">
+                    <div *ngIf="paginatedPosts.length > 0">
+                        <div *ngFor="let post of paginatedPosts[currentPage]" class="post-item row mb-4">
+                            <div class="col-md-4 post-img">
+                                <img [src]="'http://localhost:5001/uploads/' + post.image" alt="{{ post.title }}"
+                                    class="img-fluid" />
+                            </div>
+                            <div class="col-md-8 post-info">
+                                <span>{{ post.createdAt | date:'MMM d, y' }}</span>
+                                <h3>{{ post.title }}</h3>
+                                <p class="mb-2">{{ post.intro }}</p>
+                                <small>{{ getReadingTime(post.content) }}</small><br>
+                                <button [routerLink]="['/post', post.slug]" class="btn btn-primary btn-sm my-2">ver
+                                    mais</button>
+                            </div>
+                        </div>
+                        <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+                            (pageChange)="goToPage($event)">
+                        </app-pagination>
+                    </div>
+                    <div *ngIf="paginatedPosts.length === 0">
+                        <p>Nenhum post encontrado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <app-popular-posts [posts]="popularPosts"></app-popular-posts>
+                <app-categories-list [categories]="categories"></app-categories-list>
+            </div>
+        </div>
+    </div>
+</section>

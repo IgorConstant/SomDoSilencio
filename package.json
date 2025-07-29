@@ -1,0 +1,21 @@
+{
+  "name": "somdosilencio",
+  "version": "1.0.0",
+  "description": "Scripts para execução unificada",
+  "scripts": {
+    "start:frontend": "cd frontend && ng serve",
+    "start:backend": "cd backend && npm run start",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "build:frontend": "cd frontend && ng build --prod",
+    "build:backend": "cd backend && npm run build",
+    "build": "npm run build:frontend && npm run build:backend",
+    "lint:frontend": "cd frontend && ng lint",
+    "lint:backend": "cd backend && npm run lint",
+    "lint": "npm run lint:frontend && npm run lint:backend"
+  },
+  "author": "Igor Henrique Constant",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

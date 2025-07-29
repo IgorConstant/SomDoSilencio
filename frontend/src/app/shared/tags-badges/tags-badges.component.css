@@ -1,0 +1,15 @@
+.tags-badges {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.tags-badges h5 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.tags-badges .badge {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 12px;
+}

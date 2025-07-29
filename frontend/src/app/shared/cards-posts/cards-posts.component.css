@@ -1,0 +1,88 @@
+/* Estilos do Cards Posts extraídos do custom-styles.css */
+.retro-layout .v-height {
+    height: 240px;
+}
+
+.retro-layout .h-entry {
+    display: block;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.retro-layout .h-entry .featured-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: scale(1.05);
+    transition: .3s all ease;
+}
+
+.retro-layout .h-entry:hover .featured-img {
+    transform: scale(1);
+}
+
+.retro-layout .h-entry.mb-30 {
+    margin-bottom: 30px;
+}
+
+.retro-layout .h-entry .date {
+    font-size: 15px;
+}
+
+.retro-layout .h-entry.gradient:before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 18%, rgba(0, 0, 0, 0.8) 99%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.retro-layout .text {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    padding: 20px;
+    max-width: 350px;
+}
+
+.retro-layout .text h2 {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.retro-layout .text span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 767.98px) {
+    .retro-layout .v-height {
+        height: 180px;
+    }
+}
+
+.text {
+    h2 {
+        font-family: "Rubik", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .author {
+        font-family: "Rubik", sans-serif;
+        font-weight: 300;
+        color: #fff;
+    }
+}

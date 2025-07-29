@@ -1,0 +1,24 @@
+<div *ngIf="loading">Carregando...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="post && !loading">
+  <section id="heroPage" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + post.image + ')'">
+    <div class="overlay"></div>
+    <div class="container">
+      <p class="badge text-center">{{ post.category }}</p>
+      <h1 class="text-center">{{ post.title }}</h1>
+      <small class="author">Por: {{ post.author }} - {{ post.createdAt | date:'MMM d, y' }}</small>
+    </div>
+  </section>
+  <section id="postagemPage" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="content">
+            <div [innerHTML]="safeContent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

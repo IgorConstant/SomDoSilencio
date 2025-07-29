@@ -1,0 +1,31 @@
+.popular-posts {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.popular-posts h5 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.popular-posts ul {
+    padding-left: 0;
+}
+
+.popular-posts li {
+    margin-bottom: 8px;
+}
+
+.popular-posts a {
+    color: #185370;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.popular-posts a:hover {
+    text-decoration: underline;
+}

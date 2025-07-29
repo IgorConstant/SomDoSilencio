@@ -1,0 +1,51 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="sobre__content">
+                    <h5 class="mb-2">Sobre</h5>
+                    <p>Apenas um cara, escrevendo sobre sua <br> relação cotidiana com a música.</p>
+                </div>
+                <div class="social__content">
+                    <h5 class="mb-2">Siga-me</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/Igorconstant" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github" style="font-size: 1.5rem;"></i></a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram" style="font-size: 1.5rem;"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/igor-henrique-constant-2b2190113/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin" style="font-size: 1.5rem;"></i></a></li>
+                        <li><a href="https://open.spotify.com/user/12172795662" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="bi bi-spotify" style="font-size: 1.5rem;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="links-uteis__content">
+                    <h5 class="mb-2">Links Úteis</h5>
+                    <ul class="list-unstyled">
+                        <li><a routerLink="/">Home</a></li>
+                        <li><a routerLink="/sobre-mim">Sobre</a></li>
+                        <li><a routerLink="/postagens">Arquivo</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="pay_me_a_coffe">
+                    <h5 class="mb-2">Apoie o Blog</h5>
+                    <p>Se você gosta do meu trabalho, considere me apoiar com um café!</p>
+                    <button class="btn btn-primary" [disabled]="isCopying" (click)="copyPixCode()">
+                        <i class="bi bi-cash-coin me-2" style="font-size: 1.2rem;"></i>
+                        <span>{{ pixBtnText }}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="copyright">
+    <div class="row ">
+        <div class="col-md-12 text-center">
+            <p class="m-0">&copy; {{ anoAtual }} Som do Silêncio. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</div>

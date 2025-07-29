@@ -1,0 +1,104 @@
+<section id="editarPosts">
+    <app-navbar-dashboard></app-navbar-dashboard>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 p-0">
+                <app-sidebar></app-sidebar>
+            </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb- mb-3 border-bottom">
+                    <h1 class="h2">Editar Postagem</h1>
+                </div>
+                <div class="formulario-editar-postagem my-5">
+                    <form #editarPostForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="post">
+                        <div class="row mb-3">
+                            <div class="col-md-12 mb-3">
+                                <input type="text" class="form-control" name="title" [(ngModel)]="post.title"
+                                    placeholder="Título" required>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <input type="text" class="form-control" name="intro" [(ngModel)]="post.intro"
+                                    placeholder="Introdução" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="autoria-foto"
+                                    [(ngModel)]="post.autoriaFoto" placeholder="Foto Por:" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="slug" [(ngModel)]="post.slug"
+                                    placeholder="Slug" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="seoDescription"
+                                    [(ngModel)]="post.seoDescription" placeholder="SEO Description" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="author" [(ngModel)]="post.author"
+                                    placeholder="Autor" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <select class="form-select" name="status" [(ngModel)]="post.status" required>
+                                    <option value="">Status</option>
+                                    <option value="rascunho">Rascunho</option>
+                                    <option value="publicado">Publicado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="tags" [(ngModel)]="post.tags"
+                                    placeholder="Tags (separadas por vírgula)">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="category" [(ngModel)]="post.category"
+                                    placeholder="Categoria">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" name="featured" [(ngModel)]="post.featured" required>
+                                    <option value="">Destaque</option>
+                                    <option value="true">Sim</option>
+                                    <option value="false">Não</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="QuillEditor__Wrapper">
+                                    <quill-editor [(ngModel)]="post.content" (ngModelChange)="onContentChange($event)"
+                                        [modules]="quillModules" name="content" [placeholder]="'Escreva aqui...'"
+                                        [style]="{height: '300px'}"></quill-editor>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <ng-container *ngIf="post.image">
+                                    <div class="mb-4 text-left">
+                                        <span>Imagem atual:</span>
+                                        <br>
+                                        <img [src]="uploadURL + '/uploads/' + post.image" alt="Imagem do post"
+                                            style="max-width: 300px; max-height: 200px; border-radius: 8px; box-shadow: 0 2px 8px #0002;">
+                                    </div>
+                                </ng-container>
+                                <input type="file" class="form-control" name="image" (change)="onFileChange($event)">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 w-100">
+                                <button type="submit" class="btn btn-primary w-100">Salvar Alterações</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div *ngIf="loading" class="text-center my-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <app-toast></app-toast>
+            </main>
+        </div>
+    </div>
+</section>

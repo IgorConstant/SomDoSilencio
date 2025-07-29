@@ -1,0 +1,92 @@
+<section id="dashboardPage">
+    <app-navbar-dashboard></app-navbar-dashboard>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 p-0">
+                <app-sidebar></app-sidebar>
+            </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb- mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+
+                </div>
+                <div class="analytics__graphics">
+                    <div class="row">
+
+                        <div class="col-md-4 pb-4">
+                            <div>
+                                <h6 class="mb-3">Postagens mais lidas</h6>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Como aprender violão do zero
+                                        <span class="badge bg-primary rounded-pill">150 Leituras</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Os melhores álbuns de 2024
+                                        <span class="badge bg-primary rounded-pill">120 Leituras</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        História do Rock Nacional
+                                        <span class="badge bg-primary rounded-pill">98 Leituras</span>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4 pb-4">
+                            <div>
+                                <h6 class="mb-3">Tipos de Dispositvos (%)</h6>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Desktop
+                                        <span class="badge bg-primary rounded-pill">60%</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Mobile
+                                        <span class="badge bg-primary rounded-pill">30%</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Tablet
+                                        <span class="badge bg-primary rounded-pill">10%</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4 pb-4">
+                            <div class="sistema-operacional">
+                                <h6 class="mb-3">Sistemas Operacionais (%)</h6>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Windows
+                                        <span class="badge bg-primary rounded-pill">50%</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        macOS
+                                        <span class="badge bg-primary rounded-pill">30%</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Linux
+                                        <span class="badge bg-primary rounded-pill">15%</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 mb-4">
+                            <div>
+                                <h6 class="mb-3">Visualizações por Mês</h6>
+                                <div class="grafico">
+                                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
+                                        [options]="lineChartOptions" [legend]="lineChartLegend" chartType="line">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>

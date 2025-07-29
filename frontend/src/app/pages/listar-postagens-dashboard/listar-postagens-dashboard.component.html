@@ -1,0 +1,27 @@
+<section id="criarPostsPage">
+    <app-navbar-dashboard></app-navbar-dashboard>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 p-0">
+                <app-sidebar></app-sidebar>
+            </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 p-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb- mb-3 border-bottom">
+                    <h1 class="h2 mb-4">Listar Postagens</h1>
+                    <div class="ms-auto mb-4">
+                        <a class="btn btn-primary" routerLink="/criar-postagem">
+                            <i class="bi bi-plus-circle"></i> Criar Postagem
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="loading" class="text-center my-5">
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                  </div>
+                </div>
+                <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+                <app-posts-data-table *ngIf="!loading && !error" [posts]="posts"></app-posts-data-table>
+            </main>
+        </div>
+    </div>
+</section>

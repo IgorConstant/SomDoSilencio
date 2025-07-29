@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0",
+    "start": "node server.js",
+    "lint": "npx eslint ."
+  },
+  "author": "Igor Henrique Constant",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "he": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1",
+    "multer": "^2.0.1",
+    "node-html-to-image": "^5.0.0",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.32.0"
+  }
+}

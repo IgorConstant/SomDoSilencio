@@ -1,0 +1,12 @@
+#postagemPage {
+    .content {
+        padding: 0 40px;
+        font-size: 14px;
+        margin: 0 auto;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        overflow-x: auto;
+        box-sizing: border-box;
+    }
+}

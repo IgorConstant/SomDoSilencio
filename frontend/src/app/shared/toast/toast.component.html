@@ -1,0 +1,6 @@
+<ng-container *ngIf="message">
+  <div class="toast-container" [ngClass]="type">
+    <i class="bi" [ngClass]="icon" style="font-size: 1.5rem; margin-right: 8px;"></i>
+    <span>{{ message }}</span>
+  </div>
+</ng-container>

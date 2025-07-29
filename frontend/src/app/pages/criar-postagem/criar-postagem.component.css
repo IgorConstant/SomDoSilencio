@@ -1,0 +1,12 @@
+.form-control {
+    width: 100%;
+}
+
+.QuillEditor__Wrapper {
+    width: 100%;
+
+    .ng-untouched {
+        width: 100%;
+        height: 100% ! important;
+    }
+}

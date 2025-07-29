@@ -1,0 +1,11 @@
+.list-group{
+    >li{
+        font-size: 14px;
+    }
+}
+
+.analytics__graphics{
+    h6{
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,21 @@
+<section id="criarPostsPage">
+    <app-navbar-dashboard></app-navbar-dashboard>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 p-0">
+                <app-sidebar></app-sidebar>
+            </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb- mb-3 border-bottom">
+                    <h1 class="h2">Integrações</h1>
+                </div>
+                <div class="mt-4">
+                    <label for="analyticsScript" class="form-label">Cole aqui o script do Google Analytics ou outra ferramenta de Analytics:</label>
+                    <textarea id="analyticsScript" class="form-control" rows="8" placeholder="Cole o script aqui..." [(ngModel)]="analyticsScript"></textarea>
+                    <button class="btn btn-primary mt-3 w-100" type="button" (click)="salvarScript()">Salvar</button>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
