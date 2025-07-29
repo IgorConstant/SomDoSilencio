@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
@@ -42,56 +44,52 @@ export class PostagemComponent implements OnInit {
 
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get("slug");
-    if (slug) {
-      this.postsService.getPosts().subscribe({
-        next: (posts) => {
-          this.allPosts = posts.filter((p) => p.status === "publicado");
-          this.postsService.getPostBySlug(slug).subscribe({
-            next: (post) => {
-              this.post = post;
-
-              // 🔍 Logs para debug
-              console.log("🟦 HTML original:", post.content);
-
-              const cleaned = this.cleanHtmlContent(post.content);
-
-              console.log("🟩 HTML limpo:", cleaned);
-
-              this.safeContent = post?.content
-                ? this.sanitizer.bypassSecurityTrustHtml(cleaned)
-                : null;
-
-              this.loading = false;
-              if (post?.title) {
-                this.titleService.setTitle(`${post.title} - o som do silêncio`);
-              }
-              if (post?.intro) {
-                this.metaService.updateTag({
-                  name: "description",
-                  content: post.intro,
-                });
-              }
-              if (post?.tags?.length) {
-                this.metaService.updateTag({
-                  name: "keywords",
-                  content: post.tags.join(", "),
-                });
-              }
-            },
-            error: () => {
-              this.error = "Post não encontrado.";
-              this.loading = false;
-            },
-          });
-        },
-        error: () => {
-          this.error = "Erro ao carregar posts.";
-          this.loading = false;
-        },
-      });
-    } else {
+    if (!slug) {
       this.error = "Slug não informado.";
       this.loading = false;
+      return;
     }
+
+    this.postsService.getPosts().pipe(
+      switchMap((posts: Post[]) => {
+        this.allPosts = posts.filter((p: Post) => p.status === "publicado");
+        return this.postsService.getPostBySlug(slug);
+      }),
+      catchError((err: any) => {
+        this.error = "Erro ao carregar posts.";
+        this.loading = false;
+        return of(null);
+      })
+    ).subscribe((post: Post | null) => {
+      if (!post) {
+        this.error = "Post não encontrado.";
+        this.loading = false;
+        return;
+      }
+      this.post = post;
+      // 🔍 Logs para debug
+      console.log("🟦 HTML original:", post.content);
+      const cleaned = this.cleanHtmlContent(post.content);
+      console.log("🟩 HTML limpo:", cleaned);
+      this.safeContent = post?.content
+        ? this.sanitizer.bypassSecurityTrustHtml(cleaned)
+        : null;
+      this.loading = false;
+      if (post?.title) {
+        this.titleService.setTitle(`${post.title} - o som do silêncio`);
+      }
+      if (post?.intro) {
+        this.metaService.updateTag({
+          name: "description",
+          content: post.intro,
+        });
+      }
+      if (post?.tags?.length) {
+        this.metaService.updateTag({
+          name: "keywords",
+          content: post.tags.join(", "),
+        });
+      }
+    });
   }
 }
