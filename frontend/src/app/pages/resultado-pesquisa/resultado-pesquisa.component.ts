@@ -4,7 +4,7 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { PostsService, Post } from '../../services/posts.service';
 import { CategoriesListComponent } from '../../shared/categories-list/categories-list.component';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-resultado-pesquisa',
   imports: [
@@ -23,6 +23,7 @@ export class ResultadoPesquisaComponent {
   pageSize = 5;
   totalPages = 0;
 
+  public environment = environment;
   popularPosts: Post[] = [];
   categories: { name: string; count: number }[] = [];
   tags: string[] = [];

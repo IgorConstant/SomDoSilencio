@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterLink } from "@angular/router";
+import { environment } from '../../../environments/environment';
 import { PostsService, Post } from "../../services/posts.service";
 import { CategoriesListComponent } from "../../shared/categories-list/categories-list.component";
 import { PopularPostsComponent } from "../../shared/popular-posts/popular-posts.component";
@@ -24,6 +25,8 @@ export class ListarPostsSiteComponent {
   currentPage = 0;
   pageSize = 5;
   totalPages = 0;
+
+  public environment = environment;
 
   popularPosts: Post[] = [];
   categories: { name: string; count: number }[] = [];

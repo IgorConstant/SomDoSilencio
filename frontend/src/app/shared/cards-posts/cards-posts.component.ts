@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { PostsService, Post } from '../../services/posts.service';
 
+
 @Component({
   selector: 'app-cards-posts',
   standalone: true,
@@ -15,6 +16,7 @@ export class CardsPostsComponent implements OnInit {
   posts: Post[] = [];
   featuredPosts: Post[] = [];
   uploadsUrl = environment.apiUrl + '/uploads/';
+  public environment = environment;
 
   constructor(private postsService: PostsService) {}
 

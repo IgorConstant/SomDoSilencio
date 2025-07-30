@@ -33,21 +33,22 @@ ENG: When I decided to start a blog about music, I really wanted to create a spa
 ### Instalação (PT-BR)
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/yourusername/BlogMusica.git
+   git clone https://github.com/IgorConstant/SomDoSilencio.git
    ```   
 2. Instale as dependências do backend:
    ```bash
-   cd BlogMusica/backend
+   cd SomDoSilencio/backend
    npm install
    ```
 3. Instale as dependências do frontend:
    ```bash
-   cd ../frontend
+   cd frontend
    npm install
    ```
 4. Configure as variáveis de ambiente:
    Crie um arquivo `.env` no diretório `backend` e adicione sua string de conexão do MongoDB e outras configurações necessárias.
    ```env
+   PORT=5001
    MONGODB_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
    ```
@@ -57,8 +58,8 @@ ENG: When I decided to start a blog about music, I really wanted to create a spa
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/BlogMusica.git
-   cd BlogMusica
+   git clone https://github.com/IgorConstant/SomDoSilencio.git
+   cd SomDoSilencio
    ```
 2. Install dependencies for the backend:
    ```bash
@@ -76,4 +77,11 @@ ENG: When I decided to start a blog about music, I really wanted to create a spa
    ```env
    MONGODB_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
+   PORT=5001
    ```
+
+5. Iniciar o Projeto
+     ```bash
+     npm run start
+     ```
+

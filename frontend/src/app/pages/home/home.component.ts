@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { CardsPostsComponent } from '../../shared/cards-posts/cards-posts.component';
 import { PostsService, Post } from '../../services/posts.service';
@@ -11,6 +12,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  public environment = environment;
   posts: Post[] = [];
   featuredPosts: Post[] = [];
   oldPosts: Post[] = [];
