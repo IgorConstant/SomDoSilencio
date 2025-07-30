@@ -2,7 +2,7 @@
 <div *ngIf="error">{{ error }}</div>
 
 <div *ngIf="post && !loading">
-  <section id="heroPage" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + post.image + ')'">
+  <section id="heroPage" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + post.image + ')'">
     <div class="overlay"></div>
     <div class="container">
       <p class="badge text-center">{{ post.category }}</p>

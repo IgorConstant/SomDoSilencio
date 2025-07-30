@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { environment } from '../../../environments/environment';
 import { switchMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
@@ -14,6 +15,7 @@ import { PostsService, Post } from "../../services/posts.service";
   styleUrl: "./postagem.component.css",
 })
 export class PostagemComponent implements OnInit {
+  public environment = environment;
   private cleanHtmlContent(html: string): string {
     if (!html) return html;
     html = html.trim();

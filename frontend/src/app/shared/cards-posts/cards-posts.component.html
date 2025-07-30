@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <ng-container *ngIf="featuredPosts.length > 0">
           <a *ngIf="featuredPosts[0]" [routerLink]="['/post', featuredPosts[0].slug]" class="h-entry mb-30 v-height gradient">
-            <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + featuredPosts[0].image + ')'" ></div>
+            <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[0].image + ')'" ></div>
             <div class="text">
               <span class="date">{{ featuredPosts[0].createdAt | date:'MMM d, y' }}</span>
               <h2>{{ featuredPosts[0].title }}</h2>
@@ -12,7 +12,7 @@
             </div>
           </a>
           <a *ngIf="featuredPosts[3]" [routerLink]="['/post', featuredPosts[3].slug]" class="h-entry mb-30 v-height gradient">
-            <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + featuredPosts[3].image + ')'" ></div>
+            <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[3].image + ')'" ></div>
             <div class="text">
               <span class="date">{{ featuredPosts[3].createdAt | date:'MMM d, y' }}</span>
               <h2>{{ featuredPosts[3].title }}</h2>
@@ -25,7 +25,7 @@
       <div class="col-md-4">
         <ng-container *ngIf="featuredPosts.length > 1">
           <a [routerLink]="['/post', featuredPosts[1].slug]" class="h-entry mb-30 h-100 gradient">
-            <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + featuredPosts[1].image + ')'" ></div>
+            <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[1].image + ')'" ></div>
             <div class="text">
               <span class="date">{{ featuredPosts[1].createdAt | date:'MMM d, y' }}</span>
               <h2>{{ featuredPosts[1].title }}</h2>
@@ -38,7 +38,7 @@
       <div class="col-md-4">
         <ng-container *ngIf="featuredPosts.length > 2">
           <a *ngIf="featuredPosts[2]" [routerLink]="['/post', featuredPosts[2].slug]" class="h-entry mb-30 v-height gradient">
-            <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + featuredPosts[2].image + ')'" ></div>
+            <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[2].image + ')'" ></div>
             <div class="text">
               <span class="date">{{ featuredPosts[2].createdAt | date:'MMM d, y' }}</span>
               <h2>{{ featuredPosts[2].title }}</h2>
@@ -46,7 +46,7 @@
             </div>
           </a>
           <a *ngIf="featuredPosts[4]" [routerLink]="['/post', featuredPosts[4].slug]" class="h-entry mb-30 v-height gradient">
-            <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + featuredPosts[4].image + ')'" ></div>
+            <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[4].image + ')'" ></div>
             <div class="text">
               <span class="date">{{ featuredPosts[4].createdAt | date:'MMM d, y' }}</span>
               <h2>{{ featuredPosts[4].title }}</h2>

@@ -1,5 +1,6 @@
 
 import nodeHtmlToImage from 'node-html-to-image';
+import process from 'node:process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const generatePostImage = async ({ title, intro, author, readTime, slug, imageFilename }) => {
   const outputDir = path.join(__dirname, '..', 'stories');
   const outputPath = path.join(outputDir, `${slug}.png`);
-  const BASE_URL = 'http://localhost:5001';
+  const BASE_URL = process.env.BASE_URL || 'https://somdosilencio.onrender.com';
   const imageUrl = imageFilename ? `${BASE_URL}/uploads/${imageFilename}` : '';
 
   await nodeHtmlToImage({

@@ -10,7 +10,7 @@
                     <div *ngIf="paginatedPosts.length > 0">
                         <div *ngFor="let post of paginatedPosts[currentPage]" class="post-item row mb-4">
                             <div class="col-md-4 post-img">
-                                <img [src]="'http://localhost:5001/uploads/' + post.image" alt="{{ post.title }}"
+                                <img [src]="environment.baseURL + '/uploads/' + post.image" alt="{{ post.title }}"
                                     class="img-fluid" />
                             </div>
                             <div class="col-md-8 post-info">

@@ -14,7 +14,7 @@
                         <div class="row">
                           <div *ngFor="let post of group" class="col-md-4">
                             <a [routerLink]="['/post', post.slug]" class="h-entry mb-30 v-height gradient">
-                              <div class="featured-img" [style.backgroundImage]="'url(http://localhost:5001/uploads/' + post.image + ')'" ></div>
+                              <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + post.image + ')'" ></div>
                               <div class="text">
                                 <span class="date">{{ post.createdAt | date:'MMM d, y' }}</span>
                                 <h2>{{ post.title }}</h2>
