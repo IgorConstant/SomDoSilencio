@@ -1,7 +1,7 @@
 <section class="section bg-light">
   <div class="container">
     <div class="row align-items-stretch retro-layout">
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <ng-container *ngIf="featuredPosts.length > 0">
           <a *ngIf="featuredPosts[0]" [routerLink]="['/post', featuredPosts[0].slug]" class="h-entry mb-30 v-height gradient">
             <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[0].image + ')'" ></div>
@@ -22,7 +22,7 @@
         </ng-container>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <ng-container *ngIf="featuredPosts.length > 1">
           <a [routerLink]="['/post', featuredPosts[1].slug]" class="h-entry mb-30 h-100 gradient">
             <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[1].image + ')'" ></div>
@@ -35,7 +35,7 @@
         </ng-container>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <ng-container *ngIf="featuredPosts.length > 2">
           <a *ngIf="featuredPosts[2]" [routerLink]="['/post', featuredPosts[2].slug]" class="h-entry mb-30 v-height gradient">
             <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + featuredPosts[2].image + ')'" ></div>

@@ -12,7 +12,7 @@
                     <div class="carousel-inner">
                       <div *ngFor="let group of oldPostsGrouped; let i = index" class="carousel-item" [class.active]="i === 0">
                         <div class="row">
-                          <div *ngFor="let post of group" class="col-md-4">
+                          <div *ngFor="let post of group" class="col-12 col-md-4">
                             <a [routerLink]="['/post', post.slug]" class="h-entry mb-30 v-height gradient">
                               <div class="featured-img" [style.backgroundImage]="'url(' + environment.baseURL + '/uploads/' + post.image + ')'" ></div>
                               <div class="text">

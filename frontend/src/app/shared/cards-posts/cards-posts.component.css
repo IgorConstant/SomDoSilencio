@@ -70,6 +70,11 @@
     .retro-layout .v-height {
         height: 180px;
     }
+    
+    /* Sobrescreve h-100 no mobile para evitar que o post do meio fique esmagado */
+    .retro-layout .h-entry.h-100 {
+        height: 180px !important;
+    }
 }
 
 .text {
