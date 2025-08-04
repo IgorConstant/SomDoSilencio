@@ -18,9 +18,11 @@ export class HomeComponent {
   oldPosts: Post[] = [];
 
   get oldPostsGrouped(): Post[][] {
+    const isMobile = window.innerWidth <= 767;
+    const groupSize = isMobile ? 1 : 3;
     const groups: Post[][] = [];
-    for (let i = 0; i < this.oldPosts.length; i += 3) {
-      groups.push(this.oldPosts.slice(i, i + 3));
+    for (let i = 0; i < this.oldPosts.length; i += groupSize) {
+      groups.push(this.oldPosts.slice(i, i + groupSize));
     }
     return groups;
   }

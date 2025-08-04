@@ -8,5 +8,9 @@
         hyphens: auto;
         overflow-x: auto;
         box-sizing: border-box;
+
+        @media(max-width: 767.98px) {
+            padding: 0;
+        }
     }
 }

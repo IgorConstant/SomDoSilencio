@@ -68,3 +68,12 @@
         font-weight: 700;
     }
 }
+
+@media (max-width: 767.98px) {
+  #carouselOldPosts .carousel-item .col-12 {
+    display: block;
+  }
+  #carouselOldPosts .carousel-item .col-md-4:not(.col-12) {
+    display: none;
+  }
+}
