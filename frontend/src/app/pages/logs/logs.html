@@ -11,38 +11,6 @@
                     <h1 class="h2">Logs do Sistema</h1>
                 </div>
 
-                <!-- Estatísticas -->
-                <div class="row mb-4" *ngIf="stats">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Estatísticas de Atividade</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h6>Ações por Tipo</h6>
-                                        <div class="mb-2" *ngFor="let stat of stats.stats">
-                                            <span class="badge me-2" [ngClass]="getActionBadgeClass(stat._id)">
-                                                {{ getActionLabel(stat._id) }}
-                                            </span>
-                                            {{ stat.count }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6>Atividade Recente</h6>
-                                        <div class="small" *ngFor="let activity of stats.recentActivity.slice(0, 5)">
-                                            <span class="badge badge-sm me-1" [ngClass]="getActionBadgeClass(activity.action)">
-                                                {{ getActionLabel(activity.action) }}
-                                            </span>
-                                            {{ activity.userEmail }} - {{ formatDate(activity.timestamp) }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Filtros -->
                 <div class="card mb-4">
