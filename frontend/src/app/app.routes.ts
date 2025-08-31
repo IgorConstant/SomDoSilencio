@@ -14,6 +14,7 @@ import { SobreMimComponent } from './pages/sobre-mim/sobre-mim.component';
 import { ArquivoStoriesComponent } from './pages/arquivo-stories/arquivo-stories.component';
 import { CuradoriaComponent } from './pages/curadoria/curadoria.component';
 import { AuthGuard } from './auth.guard';
+import { Logs } from './pages/logs/logs';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -28,5 +29,6 @@ export const routes: Routes = [
     { path: 'post/:slug', component: PostagemComponent },
     { path: 'resultado-pesquisa', component: ResultadoPesquisaComponent },
     { path: 'sobre-mim', component: SobreMimComponent },
-    { path: 'curadoria', component: CuradoriaComponent, canActivate: [AuthGuard] }
+    { path: 'curadoria', component: CuradoriaComponent, canActivate: [AuthGuard] },
+    { path: 'logs', component: Logs, canActivate: [AuthGuard] }
 ];

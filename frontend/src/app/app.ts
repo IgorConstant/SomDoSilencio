@@ -24,7 +24,7 @@ export class App {
       "/integracoes",
       "/arquivo-stories",
       "/curadoria",
-      
+      "/logs"
     ];
    
     return (
