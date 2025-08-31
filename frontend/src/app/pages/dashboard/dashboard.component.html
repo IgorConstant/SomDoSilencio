@@ -7,28 +7,63 @@
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb- mb-3 border-bottom">
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
-
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary" 
+                                [class.active]="selectedPeriod === '7d'"
+                                (click)="changePeriod('7d')">7 dias</button>
+                        <button type="button" class="btn btn-outline-primary"
+                                [class.active]="selectedPeriod === '30d'"
+                                (click)="changePeriod('30d')">30 dias</button>
+                        <button type="button" class="btn btn-outline-primary"
+                                [class.active]="selectedPeriod === '90d'"
+                                (click)="changePeriod('90d')">90 dias</button>
+                    </div>
                 </div>
-                <div class="analytics__graphics">
+
+                <!-- Loading -->
+                <div *ngIf="loading" class="text-center my-5">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Carregando...</span>
+                    </div>
+                </div>
+
+                <!-- Error -->
+                <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+                <div class="analytics__graphics" *ngIf="!loading && !error && analytics">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total de Visualizações</h5>
+                                    <h2 class="text-primary">{{ analytics.totalViews | number }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Visitantes Únicos</h5>
+                                    <h2 class="text-success">{{ analytics.uniqueVisitors | number }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
 
                         <div class="col-md-4 pb-4">
                             <div>
                                 <h6 class="mb-3">Postagens mais lidas</h6>
                                 <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Como aprender violão do zero
-                                        <span class="badge bg-primary rounded-pill">150 Leituras</span>
+                                    <li *ngFor="let post of analytics.mostReadPosts" 
+                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ post.title }}
+                                        <span class="badge bg-primary rounded-pill">{{ post.views }} Leituras</span>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Os melhores álbuns de 2024
-                                        <span class="badge bg-primary rounded-pill">120 Leituras</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        História do Rock Nacional
-                                        <span class="badge bg-primary rounded-pill">98 Leituras</span>
+                                    <li *ngIf="analytics.mostReadPosts.length === 0"
+                                        class="list-group-item text-center text-muted">
+                                        Nenhum dado disponível
                                     </li>
                                 </ul>
                             </div>
@@ -39,15 +74,15 @@
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         Desktop
-                                        <span class="badge bg-primary rounded-pill">60%</span>
+                                        <span class="badge bg-primary rounded-pill">{{ getDevicePercentage('desktop') }}%</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         Mobile
-                                        <span class="badge bg-primary rounded-pill">30%</span>
+                                        <span class="badge bg-primary rounded-pill">{{ getDevicePercentage('mobile') }}%</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         Tablet
-                                        <span class="badge bg-primary rounded-pill">10%</span>
+                                        <span class="badge bg-primary rounded-pill">{{ getDevicePercentage('tablet') }}%</span>
                                     </li>
                                 </ul>
                             </div>
@@ -56,17 +91,14 @@
                             <div class="sistema-operacional">
                                 <h6 class="mb-3">Sistemas Operacionais (%)</h6>
                                 <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Windows
-                                        <span class="badge bg-primary rounded-pill">50%</span>
+                                    <li *ngFor="let os of getTopOperatingSystems()" 
+                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ os.name }}
+                                        <span class="badge bg-primary rounded-pill">{{ os.percentage }}%</span>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        macOS
-                                        <span class="badge bg-primary rounded-pill">30%</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Linux
-                                        <span class="badge bg-primary rounded-pill">15%</span>
+                                    <li *ngIf="getTopOperatingSystems().length === 0"
+                                        class="list-group-item text-center text-muted">
+                                        Nenhum dado disponível
                                     </li>
                                 </ul>
                             </div>
@@ -75,10 +107,14 @@
 
                         <div class="col-md-12 mb-4">
                             <div>
-                                <h6 class="mb-3">Visualizações por Mês</h6>
+                                <h6 class="mb-3">Visualizações por Período</h6>
                                 <div class="grafico">
-                                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
-                                        [options]="lineChartOptions" [legend]="lineChartLegend" chartType="line">
+                                    <canvas baseChart 
+                                            [datasets]="lineChartData" 
+                                            [labels]="lineChartLabels"
+                                            [options]="lineChartOptions" 
+                                            [legend]="lineChartLegend" 
+                                            chartType="line">
                                     </canvas>
                                 </div>
                             </div>

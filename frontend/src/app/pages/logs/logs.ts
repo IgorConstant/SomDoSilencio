@@ -7,9 +7,14 @@ import { LogsService, LogEntry, LogStats } from '../../services/logs.service';
 
 @Component({
   selector: 'app-logs',
-  imports: [CommonModule, FormsModule, SidebarComponent, NavbarDashboardComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SidebarComponent,
+    NavbarDashboardComponent,
+  ],
   templateUrl: './logs.html',
-  styleUrl: './logs.css'
+  styleUrl: './logs.css',
 })
 export class Logs implements OnInit {
   logs: LogEntry[] = [];
@@ -17,21 +22,18 @@ export class Logs implements OnInit {
   loading = true;
   error = '';
 
-  // Filtros
   filters = {
     action: '',
     resourceType: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
   };
 
-  // Paginação
   currentPage = 1;
   totalPages = 0;
   total = 0;
   pageSize = 50;
 
-  // Opções para os filtros
   actionOptions = [
     { value: '', label: 'Todas as ações' },
     { value: 'CREATE_POST', label: 'Criar Post' },
@@ -40,14 +42,14 @@ export class Logs implements OnInit {
     { value: 'LOGIN', label: 'Login' },
     { value: 'REGISTER', label: 'Registro' },
     { value: 'ERROR', label: 'Erro' },
-    { value: 'VIEW_POST', label: 'Visualizar Post' }
+    { value: 'VIEW_POST', label: 'Visualizar Post' },
   ];
 
   resourceTypeOptions = [
     { value: '', label: 'Todos os tipos' },
     { value: 'POST', label: 'Post' },
     { value: 'USER', label: 'Usuário' },
-    { value: 'SYSTEM', label: 'Sistema' }
+    { value: 'SYSTEM', label: 'Sistema' },
   ];
 
   constructor(private logsService: LogsService) {}
@@ -59,19 +61,21 @@ export class Logs implements OnInit {
 
   loadLogs(): void {
     this.loading = true;
-    this.logsService.getLogs(this.currentPage, this.pageSize, this.filters).subscribe({
-      next: (response) => {
-        this.logs = response.logs;
-        this.totalPages = response.totalPages;
-        this.total = response.total;
-        this.loading = false;
-      },
-      error: (err) => {
-        this.error = 'Erro ao carregar logs';
-        this.loading = false;
-        console.error('Erro ao carregar logs:', err);
-      }
-    });
+    this.logsService
+      .getLogs(this.currentPage, this.pageSize, this.filters)
+      .subscribe({
+        next: (response) => {
+          this.logs = response.logs;
+          this.totalPages = response.totalPages;
+          this.total = response.total;
+          this.loading = false;
+        },
+        error: (err) => {
+          this.error = 'Erro ao carregar logs';
+          this.loading = false;
+          console.error('Erro ao carregar logs:', err);
+        },
+      });
   }
 
   loadStats(): void {
@@ -81,7 +85,7 @@ export class Logs implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao carregar estatísticas:', err);
-      }
+      },
     });
   }
 
@@ -95,7 +99,7 @@ export class Logs implements OnInit {
       action: '',
       resourceType: '',
       startDate: '',
-      endDate: ''
+      endDate: '',
     };
     this.currentPage = 1;
     this.loadLogs();
@@ -109,7 +113,7 @@ export class Logs implements OnInit {
   }
 
   getActionLabel(action: string): string {
-    const option = this.actionOptions.find(opt => opt.value === action);
+    const option = this.actionOptions.find((opt) => opt.value === action);
     return option ? option.label : action;
   }
 
@@ -138,7 +142,7 @@ export class Logs implements OnInit {
     const maxPages = 5;
     const startPage = Math.max(1, this.currentPage - Math.floor(maxPages / 2));
     const endPage = Math.min(this.totalPages, startPage + maxPages - 1);
-    
+
     const pages: number[] = [];
     for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
