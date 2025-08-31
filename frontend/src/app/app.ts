@@ -3,6 +3,7 @@ import { RouterOutlet, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { FooterComponent } from "./shared/footer/footer.component";
+import { AnalyticsService } from "./services/analytics.service";
 
 @Component({
   selector: "app-root",
@@ -13,7 +14,10 @@ import { FooterComponent } from "./shared/footer/footer.component";
 
 export class App {
   title = "";
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    private analyticsService: AnalyticsService
+  ) {}
 
   get hideLayoutElements(): boolean {
     const hiddenRoutes = [
