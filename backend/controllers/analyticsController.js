@@ -350,17 +350,27 @@ function getClientIP(req) {
 
 function getDeviceType(userAgent) {
   const ua = userAgent.toLowerCase();
-  if (/tablet|ipad/i.test(ua)) return 'tablet';
-  if (/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i.test(ua)) return 'mobile';
+  
+  // Detectar tablet primeiro (mais específico)
+  if (/ipad|tablet|kindle|playbook|silk|(android(?!.*mobile))/i.test(ua)) {
+    return 'tablet';
+  }
+  
+  // Detectar mobile
+  if (/mobile|iphone|ipod|android|blackberry|opera mini|opera mobi|skyfire|maemo|windows phone|palm|iemobile|symbian|fennec/i.test(ua)) {
+    return 'mobile';
+  }
+  
   return 'desktop';
 }
 
 function getOperatingSystem(userAgent) {
   if (/windows nt/i.test(userAgent)) return 'Windows';
-  if (/macintosh|mac os x/i.test(userAgent)) return 'macOS';
+  if (/mac os x|macintosh/i.test(userAgent)) return 'macOS';
   if (/linux/i.test(userAgent)) return 'Linux';
   if (/android/i.test(userAgent)) return 'Android';
   if (/iphone|ipad|ipod/i.test(userAgent)) return 'iOS';
+  if (/chrome os/i.test(userAgent)) return 'Chrome OS';
   return 'Outros';
 }
 

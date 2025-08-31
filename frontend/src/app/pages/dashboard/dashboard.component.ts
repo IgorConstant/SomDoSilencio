@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
 import { NavbarDashboardComponent } from '../../shared/navbar-dashboard/navbar-dashboard.component';
@@ -11,11 +11,12 @@ import { AnalyticsService, AnalyticsData } from '../../services/analytics.servic
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   analytics: AnalyticsData | null = null;
   loading = true;
   error: string | null = null;
   selectedPeriod: '7d' | '30d' | '90d' = '30d';
+  private refreshInterval: any;
 
   public lineChartData: any[] = [];
   public lineChartLabels: string[] = [];
@@ -38,6 +39,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAnalytics();
+    this.refreshInterval = setInterval(() => {
+      this.loadAnalytics();
+    }, 30000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.refreshInterval) {
+      clearInterval(this.refreshInterval);
+    }
   }
 
   loadAnalytics(): void {

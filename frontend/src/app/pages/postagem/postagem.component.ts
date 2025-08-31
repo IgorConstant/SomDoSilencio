@@ -7,6 +7,7 @@ import { CommonModule } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
 import { Title, Meta } from "@angular/platform-browser";
 import { PostsService, Post } from "../../services/posts.service";
+import { AnalyticsService } from "../../services/analytics.service";
 
 @Component({
   selector: "app-postagem",
@@ -41,7 +42,8 @@ export class PostagemComponent implements OnInit {
     private postsService: PostsService,
     private titleService: Title,
     private metaService: Meta,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private analyticsService: AnalyticsService
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +71,17 @@ export class PostagemComponent implements OnInit {
         return;
       }
       this.post = post;
+      
+      // Track post view
+      this.analyticsService.trackPostView(post._id).subscribe({
+        next: (response) => {
+          console.log('Post view tracked:', response);
+        },
+        error: (error) => {
+          console.error('Error tracking post view:', error);
+        }
+      });
+      
       // 🔍 Logs para debug
       console.log("🟦 HTML original:", post.content);
       const cleaned = this.cleanHtmlContent(post.content);
