@@ -365,12 +365,35 @@ function getDeviceType(userAgent) {
 }
 
 function getOperatingSystem(userAgent) {
+  // Windows - diferentes versões
+  if (/windows nt 10|windows 10/i.test(userAgent)) return 'Windows 10/11';
+  if (/windows nt 6.3/i.test(userAgent)) return 'Windows 8.1';
+  if (/windows nt 6.2/i.test(userAgent)) return 'Windows 8';
+  if (/windows nt 6.1/i.test(userAgent)) return 'Windows 7';
   if (/windows nt/i.test(userAgent)) return 'Windows';
+  
+  // macOS/iOS
+  if (/iphone|ipod/i.test(userAgent)) return 'iOS (iPhone)';
+  if (/ipad/i.test(userAgent)) return 'iOS (iPad)';
   if (/mac os x|macintosh/i.test(userAgent)) return 'macOS';
+  
+  // Android
+  if (/android/i.test(userAgent)) {
+    const androidMatch = userAgent.match(/android\s([\d.]+)/i);
+    if (androidMatch) {
+      return `Android ${androidMatch[1]}`;
+    }
+    return 'Android';
+  }
+  
+  // Linux
+  if (/ubuntu/i.test(userAgent)) return 'Ubuntu';
   if (/linux/i.test(userAgent)) return 'Linux';
-  if (/android/i.test(userAgent)) return 'Android';
-  if (/iphone|ipad|ipod/i.test(userAgent)) return 'iOS';
+  
+  // Outros sistemas
   if (/chrome os/i.test(userAgent)) return 'Chrome OS';
+  if (/cros/i.test(userAgent)) return 'Chrome OS';
+  
   return 'Outros';
 }
 
