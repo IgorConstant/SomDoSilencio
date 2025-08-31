@@ -11,6 +11,7 @@ import authRoutes from './routes/authRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
 import sitemapRoutes from './routes/sitemapRoutes.js';
+import logRoutes from './routes/logRoutes.js';
 
 import storiesRoutes from './routes/storiesRoutes.js';
 
@@ -32,6 +33,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/logs', logRoutes);
 app.use('/sitemap.xml', sitemapRoutes);
 app.use('/stories', express.static(path.join(__dirname, 'stories')));
 app.use('/api/stories', storiesRoutes);

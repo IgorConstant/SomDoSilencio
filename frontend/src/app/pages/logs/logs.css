@@ -1,0 +1,36 @@
+.badge-sm {
+  font-size: 0.75em;
+}
+
+.table th {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.table td {
+  font-size: 0.875rem;
+  vertical-align: middle;
+}
+
+.card {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table-responsive {
+  max-height: 600px;
+}
+
+.pagination {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
