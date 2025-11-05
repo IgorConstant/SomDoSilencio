@@ -72,7 +72,7 @@ export class ListarPostsSiteComponent {
   setTags() {
     const tagSet = new Set<string>();
     this.posts.forEach(post => {
-      post.tags?.forEach(tag => tagSet.add(tag));
+      post.tags?.forEach((tag: string) => tagSet.add(tag));
     });
     this.tags = Array.from(tagSet);
   }
