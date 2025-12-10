@@ -2,39 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
-
-export interface Post {
-  _id: string;
-  title: string;
-  slug: string;
-  author: string;
-  content: string;
-  image: string;
-  seoDescription: string;
-  status: string;
-  intro: string;
-  tags: string[];
-  autoriaFoto: string;
-  category: string;
-  featured: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface CriarPosts {
-  title: string;
-  slug: string;
-  author: string;
-  content: string;
-  image: string;
-  seoDescription: string;
-  status: string;
-  tags: string[];
-  category: string;
-  featured: boolean;
-  autoriaFoto: string;
-  intro: string;
-}
+import { Post, CriarPosts } from "../models/post.model";
 
 @Injectable({
   providedIn: "root",
@@ -88,7 +56,7 @@ export class PostsService {
     const url = `${this.apiUrl}/slug/${slug}`;
     return this.http.get<Post>(url);
   }
-  
+
   deletePost(id: string): Observable<any> {
     const url = `${this.apiUrl}/delete/${id}`;
     const token = localStorage.getItem("token");
@@ -99,3 +67,5 @@ export class PostsService {
     return this.http.delete(url, { headers });
   }
 }
+
+export type { Post, CriarPosts } from "../models/post.model";
