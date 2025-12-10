@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>o som do silêncio</title>
-  <base href="/SomDoSilencio/">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="description" content="Onde transmito meu sentimento através da música.">
@@ -23,6 +23,16 @@
   <app-root></app-root>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+  <script>
+    const redirect = sessionStorage.getItem('redirect');
+    if (redirect && redirect !== '/') {
+      sessionStorage.removeItem('redirect');
+      const full = window.location.origin + redirect;
+      window.location.replace(full);
+    }
+  </script>
+
 <link rel="modulepreload" href="chunk-55QIQAIM.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-JBB35J6J.js" type="module"></script></body>
 
 </html>
