@@ -1,63 +1,65 @@
+@import "../../../design-tokens/colors.scss";
+
 #loginPage {
-    background: #185370;
-    height: 100vh;
-    font-family: "Rubik", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: 400;
+  background: var(--primary);
+  height: 100vh;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
 
-    .form-signin {
-        max-width: 330px;
-        padding: 1rem;
+  .form-signin {
+    max-width: 330px;
+    padding: 1rem;
+  }
+
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  h1 {
+    color: var(--lightest-gray);
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    color: var(--lightest-gray);
+    font-size: 16px;
+  }
+
+  .form-control {
+    border: 1px solid var(--lightest-gray);
+    margin: 10px 0;
+    color: var(--lightest-gray);
+    font-size: 14px;
+
+    &:focus {
+      border-color: var(--lightest-gray) !important;
+      box-shadow: none;
     }
+  }
 
-    .form-signin .form-floating:focus-within {
-        z-index: 2;
-    }
-
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    h1 {
-        color: #ced4da;
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    label {
-        color: #ced4da;
-        font-size: 16px;
-    }
-
-    .form-control {
-        border: 1px solid #ced4da;
-        margin: 10px 0;
-        color: #ced4da;
-        font-size: 14px;
-
-        &:focus {
-            border-color: #ced4da !important;
-            box-shadow: none;
-        }
-    }
-
-    button {
-        background: #ced4da;
-        color: #185370;
-        font-size: 14px;
-        font-weight: bold;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-    }
+  button {
+    background: var(--lightest-gray);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
 }

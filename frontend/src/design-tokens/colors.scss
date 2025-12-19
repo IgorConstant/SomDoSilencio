@@ -1,0 +1,30 @@
+// Design Tokens - Cores do Projeto
+// ===================================
+
+:root {
+  // Primárias
+  --primary: #185370;
+  --primary-light: #f0f0f0;
+
+  // Secundárias
+  --secondary: #ebebeb;
+
+  // Accent
+  --accent: #007bff;
+  --accent-dark: #0056b3;
+
+  // Neutros
+  --dark: #222;
+  --gray: #a9a9a9;
+  --light-gray: #ccc;
+  --lightest-gray: #ced4da;
+  --white: #fff;
+  --black: #000;
+
+  // Sombras
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 32px -4px rgba(0, 0, 0, 0.35);
+  --shadow-dark: rgba(0, 0, 0, 0.5);
+  --shadow-overlay: rgba(0, 0, 0, 0.8);
+  --shadow-primary: rgba(24, 83, 112, 0.15);
+}
