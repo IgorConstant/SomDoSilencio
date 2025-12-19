@@ -6,9 +6,9 @@ export const getMfaSecret = async (req, res) => {
   res.json({ secret: user.mfaSecret });
 };
 // controllers/authController.js
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
-import speakeasy from 'speakeasy';
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+import speakeasy from "speakeasy";
 /* global process */
 
 export const login = async (req, res) => {
@@ -22,11 +22,13 @@ export const login = async (req, res) => {
 export const register = async (req, res) => {
   const { email, password } = req.body;
   const existing = await User.findOne({ email });
-  if (existing) return res.status(409).json({ error: 'Usuário já existe' });
+  if (existing) return res.status(409).json({ error: "Usuário já existe" });
 
-  const secret = speakeasy.generateSecret({ name: `BlogMúsica (${email})` });
+  const secret = speakeasy.generateSecret({
+    name: `Som do Silencio (${email})`,
+  });
   const user = new User({ email, password, mfaSecret: secret.base32 });
   await user.save();
 
-  res.json({ message: 'Usuário criado com MFA', secret: secret.otpauth_url });
+  res.json({ message: "Usuário criado com MFA", secret: secret.otpauth_url });
 };

@@ -1,76 +1,76 @@
 .navbar {
-    background-color: #185370;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-    position: relative;
-    z-index: 100;
-    padding: 15px 20px;
+  background-color: var(--primary);
+  box-shadow: 0 2px 4px var(--shadow-primary);
+  position: relative;
+  z-index: 100;
+  padding: 15px 20px;
+}
 
-    .navbar-nav {
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center;
+}
 
-        .nav-item {
-            margin: 0 10px;
-            font-size: 14px;
-        }
+.navbar .navbar-nav .nav-item {
+  margin: 0 10px;
+  font-size: 14px;
+}
 
+.navbar .navbar-nav .nav-link {
+  color: var(--white);
+  font-weight: 500;
+  text-transform: lowercase;
+  transition:
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .nav-link {
-            color: #fff;
-            font-weight: 500;
-            text-transform: lowercase;
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.navbar .navbar-nav .nav-link:hover {
+  color: var(--primary-light);
+  text-decoration: none;
+  text-shadow: 0 2px 8px var(--shadow-primary);
+}
 
-            &:hover {
-                color: #f0f0f0;
-                text-decoration: none;
-                text-shadow: 0 2px 8px rgba(24, 83, 112, 0.15);
-            }
-        }
+.navbar .form-control {
+  background: transparent !important;
+  color: var(--white);
+  font-size: 14px;
+}
 
-
-    }
-
-    .form-control {
-        background: transparent !important;
-        color: #fff;
-        font-size: 14px;
-    }
-
-    .form-control::placeholder {
-        color: #ccc;
-        font-size: 12px;
-    }
+.navbar .form-control::placeholder {
+  color: var(--light-gray);
+  font-size: 12px;
 }
 
 #mobileMenu {
-    background: #185370;
+  background: var(--primary);
+  box-shadow: 0 2px 4px var(--shadow-primary);
+}
 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+#mobileMenu h5 {
+  color: var(--white);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
 
-    h5 {
-        color: #fff;
-        font-weight: 500;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-    }
+#mobileMenu .btn-outline-primary {
+  color: var(--white);
+  border-color: var(--white);
+}
 
-    .btn-outline-primary {
-        color: #fff;
-        border-color: #fff;
+#mobileMenu .btn-outline-primary:hover {
+  background-color: var(--white);
+  color: var(--primary);
+}
 
-        &:hover {
-            background-color: #fff;
-            color: #185370;
-        }
-    }
+#mobileMenu .nav-link {
+  color: var(--white);
+  font-weight: 500;
+  text-transform: lowercase;
+}
 
-    .nav-link {
-        color: #fff;
-        font-weight: 500;
-        text-transform: lowercase;
-
-        &:hover {
-            color: #f0f0f0;
-            text-decoration: none;
-        }
-    }
+#mobileMenu .nav-link:hover {
+  color: var(--primary-light);
+  text-decoration: none;
 }

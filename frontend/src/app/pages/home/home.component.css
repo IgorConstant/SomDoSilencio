@@ -1,72 +1,79 @@
+@import "../../../design-tokens/colors.scss";
+
 #oldPosts .h-entry.v-height {
-    height: 240px;
-    display: block;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
+  height: 240px;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 #oldPosts .h-entry .featured-img {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    transform: scale(1.05);
-    transition: .3s all ease;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.05);
+  transition: 0.3s all ease;
 }
 #oldPosts .h-entry:hover .featured-img {
-    transform: scale(1);
+  transform: scale(1);
 }
 #oldPosts .h-entry.gradient:before {
-    z-index: 1;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to bottom, transparent 0%, transparent 18%, rgba(0,0,0,0.8) 99%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 18%,
+    var(--shadow-overlay) 99%,
+    var(--shadow-overlay) 100%
+  );
 }
 #oldPosts .text {
-    position: absolute;
-    bottom: 0;
-    z-index: 10;
-    padding: 20px;
-    max-width: 350px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  padding: 20px;
+  max-width: 350px;
 }
 #oldPosts .text h2 {
-    color: #fff;
-    font-size: 18px;
-    line-height: 1.2;
-    margin-bottom: 0;
-    font-weight: 700;
+  color: var(--white);
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 0;
+  font-weight: 700;
 }
 #oldPosts .text span {
-    color: rgba(255,255,255,0.7);
-    font-size: 12px;
-    display: block;
-    margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
 }
 #oldPosts .text .author {
-    font-family: "Rubik", sans-serif;
-    font-weight: 300;
-    color: #fff;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  color: var(--white);
 }
 @media (max-width: 767.98px) {
-    #oldPosts .h-entry.v-height {
-        height: 180px;
-    }
+  #oldPosts .h-entry.v-height {
+    height: 180px;
+  }
 }
 
-
 #oldPosts {
-    background: #ebebeb;
-    padding: 40px 0px;
+  background: var(--secondary-light);
+  padding: 40px 0px;
 
-    h3{
-        font-weight: 700;
-    }
+  h3 {
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 767.98px) {
