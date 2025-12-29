@@ -7,6 +7,7 @@ import { AnalyticsService, AnalyticsData } from '../../services/analytics.servic
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [SidebarComponent, NavbarDashboardComponent, BaseChartDirective, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -38,6 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private analyticsService: AnalyticsService) {}
 
   ngOnInit(): void {
+    console.log('[Dashboard] ngOnInit');
     this.loadAnalytics();
     this.refreshInterval = setInterval(() => {
       this.loadAnalytics();
@@ -51,16 +53,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   loadAnalytics(): void {
+    console.log('[Dashboard] loadAnalytics', { period: this.selectedPeriod });
     this.loading = true;
     this.error = null;
 
     this.analyticsService.getDashboardAnalytics(this.selectedPeriod).subscribe({
       next: (data) => {
+        console.log('[Dashboard] analytics recebido', data);
         this.analytics = data;
         this.updateChartData();
         this.loading = false;
       },
-      error: () => {
+      error: (err) => {
+        console.error('[Dashboard] erro ao carregar analytics', err);
         this.error = 'Erro ao carregar dados de analytics';
         this.loading = false;
       }
