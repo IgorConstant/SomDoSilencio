@@ -2,6 +2,10 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import '../src/chartjs-setup';
 import { App } from './app/app';
+import { registerLocaleData } from '@angular/common';
+import localePtBr from '@angular/common/locales/pt';
+
+registerLocaleData(localePtBr, 'pt');
 
 bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));

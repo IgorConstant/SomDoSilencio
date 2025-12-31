@@ -7,7 +7,8 @@
     <div class="container">
       <p class="badge text-center">{{ post.category }}</p>
       <h1 class="text-center">{{ post.title }}</h1>
-      <small class="author">Por: {{ post.author }} - {{ post.createdAt | date:'MMM d, y' }}</small>
+      <p class="text-center my-4">{{post.intro}}</p>
+      <small class="author">Por: {{ post.author }} - {{ post.createdAt | date:'d \'de\' MMMM \'de\' y':undefined:'pt' }}</small>
     </div>
   </section>
   <section id="postagemPage" class="py-5">
