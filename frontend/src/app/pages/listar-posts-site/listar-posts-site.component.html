@@ -14,7 +14,7 @@
                                     class="img-fluid" />
                             </div>
                             <div class="col-md-8 post-info">
-                                <span>{{ post.createdAt | date:'MMM d, y' }}</span>
+                                <span>{{ post.createdAt | date:'d \'de\' MMMM \'de\' y':undefined:'pt' }}</span>
                                 <h3>{{ post.title }}</h3>
                                 <p class="mb-2">{{ post.intro }}</p>
                                 <small>{{ getReadingTime(post.content) }}</small><br>
