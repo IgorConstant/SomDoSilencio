@@ -27,7 +27,7 @@ const generatePostImage = async ({
 
   const BASE_URL = process.env.BASE_URL ||
     (process.env.NODE_ENV === "production"
-      ? "https://somdosilencio.onrender.com"
+      ? "https://osomdosilencio.com.br"
       : "http://localhost:5001");
 
   const imageUrl = imageFilename ? `${BASE_URL}/uploads/${imageFilename}` : "";
