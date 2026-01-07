@@ -25,7 +25,8 @@ const generatePostImage = async ({
   const outputDir = path.join(__dirname, "..", "stories");
   const outputPath = path.join(outputDir, `${slug}.png`);
 
-  const BASE_URL = process.env.BASE_URL ||
+  const BASE_URL =
+    process.env.BASE_URL ||
     (process.env.NODE_ENV === "production"
       ? "https://osomdosilencio.com.br"
       : "http://localhost:5001");
@@ -36,74 +37,127 @@ const generatePostImage = async ({
     output: outputPath,
     html: `
       <html>
-        <head>
-          <style>
-            body {
-              margin: 0;
-              padding: 0;
-              font-family: Arial, sans-serif;
-              background: #000;
-            }
-            .storie-container {
-              position: relative;
-              width: 720px;
-              height: 1280px;
-              overflow: hidden;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background-image: url('${imageUrl}');
-              background-size: cover;
-              background-position: center;
-              background-repeat: no-repeat;
-            }
-            .card {
-              background: #fff;
-              padding: 48px 36px;
-              width: 540px;
-              border-radius: 24px;
-              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            }
-            .read-time {
-              color: #888;
-              font-size: 18px;
-              margin-bottom: 10px;
-            }
-            .title {
-              font-size: 38px;
-              font-weight: bold;
-              margin: 18px 0 14px 0;
-              line-height: 1.15;
-              word-break: break-word;
-            }
-            .subtitle {
-              font-size: 22px;
-              color: #555;
-              margin-bottom: 18px;
-              word-break: break-word;
-            }
-            .author {
-              margin-top: 24px;
-              font-size: 20px;
-              color: #333;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="storie-container">
-            <div class="card">
-              <div class="read-time">${escapeHtml(readTime)}</div>
-              <div class="title">${escapeHtml(title)}</div>
-              <div class="subtitle">${escapeHtml(intro)}</div>
-              <div class="author">Por: ${escapeHtml(author)}</div>
+
+<head>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+
+        .story {
+            position: relative;
+            width: 1080px;
+            height: 1920px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .story::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('${imageUrl}') no-repeat center center/cover;
+            z-index: 1;
+        }
+
+        .story::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(8px);
+            background: linear-gradient(135deg, rgba(128, 0, 128, 0.15), rgba(0, 0, 0, 0.25));
+            z-index: 2;
+        }
+
+        .story-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 100px 50px;
+            z-index: 3;
+            background: #ffffff;
+            color: #222;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .story-title {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .story-description {
+            font-size: 36px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .story-meta {
+            font-size: 28px;
+            opacity: 0.85;
+        }
+
+        .story-author {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .story-date {
+            display: block;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="story">
+        <div class="story-content">
+            <h1 class="story-title">${escapeHtml(title)}</h1>
+            <p class="story-description">${escapeHtml(intro)}</p>
+            <div class="story-meta">
+                <span class="story-author">Por ${escapeHtml(author)}</span>
+                <span class="story-date">${escapeHtml(readTime)}</span>
             </div>
-          </div>
-        </body>
-      </html>
+        </div>
+    </div>
+</body>
+
+</html>
     `,
   });
 
